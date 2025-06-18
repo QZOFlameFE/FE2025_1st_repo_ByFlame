@@ -471,6 +471,8 @@ To park accurately, an ultrasonic sensor is used, when this sensor notices a par
 
 ## Team Photos
 ![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Team_photos/official-photos/team.jpg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Team_photos/workingproccess1.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Team_photos/workingproccess2.jpeg)
 </br>
 </br>
 # <hr/>
