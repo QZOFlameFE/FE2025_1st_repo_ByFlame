@@ -497,7 +497,7 @@ To park accurately, an ultrasonic sensor is used, when this sensor notices a par
 
 # Code explanation
 The code is written in LEGO MINDSTORMS block programming language and you can download and check it 
-<a href="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/OBSTACLE_CHALLENGE2024YA.ev3">here</a>. </br> </br>
+<a href="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/FECHALLENGE2025YA.ev3">here</a>. </br> </br>
 
 First of all we align the steering wheels to the center, so the robot moves straightforward. Then in configuration we set app all of the variables with specific values and using the bug of LEGO MINDSTORMS we reset the values of gyro sensor. Then our programm splits into 3 streams, first for robot control, 2nd for taking the values of Pixy2 camera into variables for obstacle management and the 3rd is for taking the values of UART sensors that are LEGO sensors and using the logic to determine the line color and round direction, activating the logic flag for turn, also the PID regulator of steering control is managed. Dividing the code into 3 streams is necessary for LEGO platform because it improves data processing and optimization of the programm logic and programm operating speed and improving precisesness of data. All of the key principles are in the 1st stream. This stream used for robot control and is responsible for the aligning to the center and to detour the obstacles. After that the main stream ends a loop for 3 laps and starts the parking.
 
