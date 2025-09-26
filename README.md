@@ -140,12 +140,15 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
     ## Why did we choose EV3 P-Brick?
     <ul>
     <li font size="10">EASY TO USE</li> <br>
-    The EV3 comes with graphical programming environment (LEGO Mindstorms EV3 software), and it makes it much easier. This visual approach is more accessible than writing code in languages like C++ (Arduino) or Python (Raspberry Pi).<br> <br><br>
+    The EV3 comes with graphical programming environment (LEGO Mindstorms EV3 software), and it makes it much easier. This visual approach is more accessible than writing code in languages like C++ (Arduino) or Python (Raspberry Pi).Moreover, EV3 can be programmed very quickly thanks to its drag and drop graphical environment. This allows teams to make fast adjustments like surprises or fix errors during competitions, saving valuable time.<br> <br><br>
     <li>INTEGRATED HARDWARE</li> <br>
-    EV3 comes with specialized LEGO motors and sensors (like color, infrared, and gyro), which are easy to connect and calibrate.<br> <br><br>
+    EV3 comes with specialized LEGO motors and sensors (like color, infrared, and gyro), which are easy to connect and calibrate. Third-party developers can integrate their own devices thanks to the EV3 Firmware Developer Kit(With this Firmware Developer Kit you get the information you need if you want to understand the firmware architecture of the LEGO MINDSTORMS EV3 Programmable brick).For example we use "Pixy camera Lego Mindstorms EV3" edition with no need to download or edit firmware by ourselves.<br> <br><br>
     <li>PORTABILITY</li>
     <br>
-    EV3 is more portable and compact,because it is designed for easy handling, and its components are built with the purpose of being assembled and taken apart for quick project changes. <br> <br><br>
+    EV3 is more portable and compact,because it is designed for easy handling, and its components are built with the purpose of being assembled and taken apart for quick project changes.LEGO MINDSTORMS EV3 Brick weighs approximately 215 grams. We can put all our kit in one box. <br> <br><br>
+    <li>ROBOT DESIGNING</li>
+    <br>
+Our robot was almost built only by LEGO details except camera and we can change its construction very quick, while Arduino or Raspberry Pi may face problem, that they can't change design because it was made by 3D-printer and etc  <br> <br><br>
  
   ### EV3 P-Brick Energy distribution
   EV3 P-Brick have 4 ports for sensors and motors and all of them distributes and contributes most of the energy resources. While LEGO sensors contribute as much energy as they need by built-in control systems and framework abilities, varying between number of iteration per second, energy consumption and framework and IDE's abilities to proceed amount of data. Then the motors energy distribution is often regulated by control algorythms and values given in the programm, consequentlyleading to smart energy distribution to provide enough power and maintain accuratte readings without overloading.
