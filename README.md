@@ -137,11 +137,17 @@ Power consumption details for motors and sensors can be found here:
 
 <table>
 <tr>
-<td width="400">
+<td align="center">
   
-  ![EV3 with ports for sensors and motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg)  
-  ![Battery recharger example](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg)  
-  ![EV3 battery slot](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png)
+  ![EV3 with ports for sensors and motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg)
+
+</td>
+</tr>
+<tr>
+<td align="center">
+  
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="49%">
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="49%">
 
 </td>
 </tr>
