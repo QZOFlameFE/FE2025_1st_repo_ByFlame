@@ -35,7 +35,7 @@ CONTENT
   * [Weight distribution](#weight-distribution)
   * [Camera position](#camera-position)
   * [Motor selection](#motor-selection)
-* [**Power and sense management**](#power-and-sense-management)
+* [**Power management and choise of power source**](#Power-management-and-choise-of-power-source)
   * [Power management](#power-management)
   * [Sense management](#sense-management)
 * [**Obstacle management**](#obstacle-management)
@@ -121,11 +121,11 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
 
 </br>
 
-## Power management
+## Power management and choise of power source
 
 </br>
 
-  The core of our robot is <a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick</a>, the power comes from a rechargable 10V Lithium Battery. EV3 P-Brick have 4 ports for motors and 4 ports for sensors.  Power consumption of motors and sensors: <a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">https://www.dexterindustries.com/ev3-current-consumption-measurement/</a>.
+  The core of our robot is <a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick</a>, the power comes from a rechargable 10V Lithium Battery. We decided to use rechargable battery instead of 6 AA batteries. Despite them having higher capacity, they can still be risky to use. While rechargable batteries can be charged in parallel, so ome is in use while another is charging. Single use batteries have to be constantly replaced and it can contribute to a big problems during the olympiad. Even rechargable AA batteries such as GP require additional adapters for charging and usually only 2-3 cells can be charged at the same time, when the robot requieres 6. EV3 P-Brick have 4 ports for motors and 4 ports for sensors.  Power consumption of motors and sensors: <a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">https://www.dexterindustries.com/ev3-current-consumption-measurement/</a>.
   <table>
 <tr>
 <th width=400>
