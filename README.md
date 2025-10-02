@@ -121,19 +121,32 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
 
 </br>
 
-## Power management and choise of power source
+## Power Management and Choice of Power Source
 
-</br>
+The core of our robot is the [EV3 Programmable Brick](https://pybricks.com/ev3-micropython/startbrick.html).  
+Its power comes from a **rechargeable 10V Lithium Battery**.  
+We decided to use a rechargeable battery instead of 6 AA batteries.  
 
-  The core of our robot is <a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick</a>, the power comes from a rechargable 10V Lithium Battery. We decided to use rechargable battery instead of 6 AA batteries. Despite them having higher capacity, they can still be risky to use. While rechargable batteries can be charged in parallel, so ome is in use while another is charging. Single use batteries have to be constantly replaced and it can contribute to a big problems during the olympiad. Even rechargable AA batteries such as GP require additional adapters for charging and usually only 2-3 cells can be charged at the same time, when the robot requieres 6. EV3 P-Brick have 4 ports for motors and 4 ports for sensors.  Power consumption of motors and sensors: <a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">https://www.dexterindustries.com/ev3-current-consumption-measurement/</a>.
-  <table>
+Despite AA batteries having a higher capacity, they can still be inconvenient and risky to use while rechargeable batteries can be charged in parallel so, one is in use while another is charging. Single use batteries have to be constantly replaced, which can cause big problems during the olympiad.  
+
+Even rechargeable AA batteries (such as GP types) require additional adapters for charging, and usually only 2–3 cells can be charged at a time, whereas the robot requires all 6.  
+
+The EV3 P-Brick has **4 ports for motors** and **4 ports for sensors**.  
+Power consumption details for motors and sensors can be found here:  
+[EV3 Current Consumption Measurement](https://www.dexterindustries.com/ev3-current-consumption-measurement/).
+
+<table>
 <tr>
-<th width=400>
+<td width="400">
   
-  ![EV3 with ports for sensors and motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg)
-</th>
+  ![EV3 with ports for sensors and motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg)  
+  ![Battery recharger example](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg)  
+  ![EV3 battery slot](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png)
+
+</td>
 </tr>
 </table>
+
 
   * [Electroschemes/wiring diagrams](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/schemes/README.md)
 
