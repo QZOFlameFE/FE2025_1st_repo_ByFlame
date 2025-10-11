@@ -39,7 +39,6 @@ CONTENT
   * [Power management and choise of power source](#Power-management-and-choise-of-power-source)
   * [Sense management](#sense-management)
 * [**Obstacle management**](#obstacle-management)
-  * [Change of the driving direction](#change-of-the-driving-direction)
   * [Parking pasition](#parking-position)
 * [**Pictures**](#pictures)
   * [Robot Photos](#robot-photos)
