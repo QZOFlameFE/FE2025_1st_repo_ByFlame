@@ -357,7 +357,7 @@ The robot's trajectory is determined by two main situations: <br>
 </ul> <br>
 
 ### Bypassing obstacles (when pixy camera sees a road sign)
-We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a quadtratic function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
+We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a linear function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
 
 https://github.com/user-attachments/assets/eb8f1eea-5bec-42ee-9bcd-57115f89046b
 ### Align center (when pixy camera does not see road sign)
