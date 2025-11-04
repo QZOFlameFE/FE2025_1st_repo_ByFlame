@@ -399,14 +399,20 @@ To park accurately, an ultrasonic sensor is used, when this sensor notices a par
 <br>
 <br>
 *Most tasks are performed using a pixy camera, here you can see how to set up this camera*
+ * [Pixy2 camera's configuration](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/README.md)
+
 
 ### Kalman filter
 Kalman Filter - an algorithm that uses a series of measurements observed over time, including statistical noise and other inaccuracies, to produce estimates of unknown variables that tend to be more accurate than those based on a single measurement, by estimating a joint probability distribution over the variables for each time-step. In other words, whole round lasts for a few minutes and our obstacle management works only thanks for odometry, but in the long term driving, uncertainty rises gradually and in the end it can be crucial to robots movements, that is why we need Kalman Filter, that can compensate error of odometry.
 
-
-
-
-  * [Pixy2 camera's configuration](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/README.md)
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Uncertaintity.jpg">
+In this graph you can see how error of odometry slowly rises by one minute compared to ultrasonics values. Y coordinate shows the distance between robot and outer wall. 
+<div class="section">
+  <h3>Kalman Filter Usage</h3>
+  <p>
+    How we use Kalman Filter? It compares 2 values from odometry and ultrasonic. In case difference is negligible, special coefficient <b>Trust</b> will rise. Normally it is close to 1, so robot will move and trust to Ultrasonics values, but if difference between values are too big or it changes too fast, trust will sharply decline. For example, Ultrasonic can detect the obstacle and its value will decrease, so with trusts downfall, robot will rely on Odometry system.
+  </p>
+</div>
 
 # <hr/>
 
