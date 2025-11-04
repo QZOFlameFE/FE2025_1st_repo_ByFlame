@@ -40,6 +40,7 @@ CONTENT
   * [Sense management](#sense-management)
 * [**Obstacle management**](#obstacle-management)
   * [Parking pasition](#parking-position)
+  * [Kalman Filter](#kalman-filter)
 * [**Pictures**](#pictures)
   * [Robot Photos](#robot-photos)
   * [Team Photos](#team-photos)
@@ -398,6 +399,9 @@ To park accurately, an ultrasonic sensor is used, when this sensor notices a par
 <br>
 <br>
 *Most tasks are performed using a pixy camera, here you can see how to set up this camera*
+
+### Kalman filter
+Kalman Filter - an algorithm that uses a series of measurements observed over time, including statistical noise and other inaccuracies, to produce estimates of unknown variables that tend to be more accurate than those based on a single measurement, by estimating a joint probability distribution over the variables for each time-step. In other words, whole round lasts for a few minutes and our obstacle management works only thanks for odometry, but in the long term driving, uncertainty rises gradually and in the end it can be crucial to robots movements, that is why we need Kalman Filter, that can compensate error of odometry.
 
 
 
