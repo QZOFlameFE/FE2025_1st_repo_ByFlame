@@ -116,7 +116,7 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
 </br>
   The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame" (tag: @QZOFlame)</a>.
    
-   * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Builiding_Instructions/README.md)
+   * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/instruction.pdf)
    * [3D model of Pixy Camera_Case](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/3D_models/README.md) <br> (used application AutoCAD)
 # <hr/>
 
