@@ -492,10 +492,9 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelstyle.jpeg)
   </td>
   <td width=50%>
-    <td width=50%>
   
 </td>
-    
+      <td width=50%>
   ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalstyle2.jpeg)
     
   </td>
