@@ -57,8 +57,8 @@ CONTENT
 -->
 # Mobility Management
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudiostyleelements.jpg)
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudioview.jpg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalscheme.jpg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalpixyview.jpg)
 <p>   Our robot is designed by lego, especially we used LEGO MINDSTORMS Education Core Set(Serial number 45544) and other LEGO EV3 sets: EV3 Expansion Set, EV3 Homeschool Combo Pack and others. You can view all of the LEGO EV3 sets by this link: <a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800</a>. Robot's wheels are taken from LEGO SPIKE Prime set and its expansion set(serial numbers 45678-1 and  45680-1). </p> </br>
   
 <p>   For better stability we used differential with two motors at the rear axle and steering control as required in the rules, our robot's size is 24.5cm (length); 14cm(width) and 29cm(height). We constructed the robot as small as possible, so its projection doesn't interfere during parking. </p>
@@ -81,7 +81,7 @@ The base of our chassis design comes from parallel steering model geometry. Whee
 <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="550" height="386" alt="Ackermann Design">
 With a parallel steering model, the inner wheel does not align with its natural turning radius and tends to scrub against to surface, causing potential danger for the stability. Akkerman system might look better and <B>it is</B>, but not for a small robot. You see, Akkerman steering model was created for a bigger and more massive things like cars, that weight tons and friction with the road is high and triggers scrubbing. Our small robot weights ~0,8 kilograms and friction with the surface is insignificant. If we gonna use Akkerman in order to solve this problem, it may have opposite effect and inner wheels will slip while turning.
 
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/FEstudiofraction.jpeg" width="550" height="528" alt="Ackermann Design">
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalbalance.jpg">
 
 Also, Akkerman is not efficient, when it comes to low speed in Lego robots. Our components are not professional and expensive like big companies use, so our components have gaps in linkages and connectors. At low speeds and small steering angles, these gaps can become comparable to intended turning angle itself. For example, if we are gonna give command to turn on 5 degrees, robot may not turn at all and it ruins microcontrolling
 ### Weight distribution
@@ -423,37 +423,37 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 <tr>
   <th width=50%>
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudiofront.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelfront.jpeg)
   </th>
   <th width=50%>
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudioleft.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelleft.jpeg)
   </th>
 </tr>
 <tr>
   <td width=50%>
     
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudioright.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelright.jpeg)
   </td>
   <td width=50%>
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudioback.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelback.jpeg)
   </td>
 </tr>
 <tr>
   <td width=50%>
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudiobottom.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelbottom.jpeg)
   </td>
   <td width=50%>
 
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudiotop.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodeltop.jpeg)
   </td>
 </tr>
 <tr>
   <td width=50%>
   
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Vehicle_photos/FEstudiostyle.jpeg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelstyle.jpeg)
   </td>
   <td width=50%>
     
