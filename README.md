@@ -417,6 +417,7 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 ## Ultrasonic rotation control
   In most of cases, 3 motors are enough for FE category, but we decided to use last one too in order to improve flexibility of our robot to a hard conditions, that is why last motor rotates Ultrasonic sensor by 180 
   degrees horizontally, increasing view range. How it works? When robot drives toward red pillar, he has to bypass it from right, but if driving direction is clock wise, ultrasonic will be pointed to the left, which means it will detect pillar and potentially it can be dangerous. That is why whenever Ultrasonic can detect pillar, our 4th motor will turn it to the opposite side, inner wall until he bypasses pilar. This system has similarities with LIDAR system.
+  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelsonic.jpeg> 
  <table>
   <tr>
     <th width=33%>Pros / Cons</th>
