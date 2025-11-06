@@ -280,7 +280,7 @@ Our robot was almost built only by LEGO details except camera and we can change 
   <tr>
     <th width=500>
       
-  ![linear function](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/linear_function_convert.png)
+  ![linear function](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/Linear%20function%20convert.jpeg)
 </th>
   <th width=500>
     
