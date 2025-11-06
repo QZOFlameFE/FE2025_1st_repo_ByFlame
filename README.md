@@ -31,7 +31,7 @@ CONTENT
 
 # Contents 
 * [**Mobility management**](#mobility-management)
-  * [Chassis design](#chassis-design-and-differential)
+  * [Chassis design](#chassis-design)
   * [Weight distribution](#weight-distribution)
   * [Camera position](#camera-position)
   * [Motor selection](#motor-selection)
