@@ -430,13 +430,17 @@ In this graph you can see how error of odometry slowly rises by one minute compa
   <tr>
     <td><b>Pros</b></td>
     <td align=center></td>
+    It is stable and easier to implement, because of less possible situations 
     <td align=center></td>
+    Way more accurate and gives a better performance, if you can program it
   </tr>
 
   <tr>
     <td><b>Cons</b></td>
     <td align=center></td>
+        It is not flexible and Ultrasonic might give wrong values because of pillars
     <td align=center></td>
+        Possible problems with controlling motor and gear-axle system has a slight backlash
   </tr>
 
 </table>
