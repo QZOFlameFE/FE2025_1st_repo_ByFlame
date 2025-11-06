@@ -416,31 +416,31 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 #### Ultrasonic rotation control 
   In most of cases, 3 motors are enough for FE category, but we decided to use last one too in order to improve flexibility of our robot to a hard conditions, that is why last motor rotates Ultrasonic sensor by 180 
   degrees horizontally, increasing view range. How it works? When robot drives toward red pillar, he has to bypass it from right, but if driving direction is clock wise, ultrasonic will be pointed to the left, which means it will detect pillar and potentially it can be dangerous. That is why whenever Ultrasonic can detect pillar, our 4th motor will turn it to the opposite side, inner wall until he bypasses pilar. This system has similarities with LIDAR system.
-  <table>
+ <table>
   <tr>
     <th width=33%>Pros / Cons</th>
-    <th width=33%>
-      Stationary Ultrasonic
-    </th>
-    <th width=33%>
-      Ultrasonic rotation control
-    </th>
+    <th width=33%>Stationary Ultrasonic</th>
+    <th width=33%>Ultrasonic rotation control</th>
   </tr>
 
   <tr>
     <td><b>Pros</b></td>
-    <td align=center></td>
-    It is stable and easier to implement, because of less possible situations 
-    <td align=center></td>
-    Way more accurate and gives a better performance, if you can program it
+    <td align=center>
+      It is stable and easier to implement, because of less possible situations
+    </td>
+    <td align=center>
+      Way more accurate and gives a better performance, if you can program it
+    </td>
   </tr>
 
   <tr>
     <td><b>Cons</b></td>
-    <td align=center></td>
-        It is not flexible and Ultrasonic might give wrong values because of pillars
-    <td align=center></td>
-        Possible problems with controlling motor and gear-axle system has a slight backlash
+    <td align=center>
+      It is not flexible and Ultrasonic might give wrong values because of pillars
+    </td>
+    <td align=center>
+      Possible problems with controlling motor and gear-axle system has a slight backlash
+    </td>
   </tr>
 
 </table>
