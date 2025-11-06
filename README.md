@@ -400,6 +400,7 @@ Our robot should move parallel and close to the outer side until it sees the par
 To park accurately, an ultrasonic sensor is used, when this sensor notices a parking wall, the robot stops and uses cycle of turning steering wheel right,left and moving back, forward on a short distance. 
 <br>
 <br>
+
 https://github.com/user-attachments/assets/bfa87282-f41e-4c83-8d34-f1d38a4ead7e
 
 *Most tasks are performed using a pixy camera, here you can see how to set up this camera*
