@@ -60,7 +60,7 @@ CONTENT
 
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalscheme.jpg)
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalpixyview.jpg)
-<p>   Our robot is designed by lego, especially we used LEGO MINDSTORMS Education Core Set(Serial number 45544) and other LEGO EV3 sets: EV3 Expansion Set, EV3 Homeschool Combo Pack and others. You can view all of the LEGO EV3 sets by this link: <a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800</a>. Robot's wheels are taken from LEGO SPIKE Prime set and its expansion set(serial numbers 45678-1 and  45680-1). </p> </br>
+<p>   Our robot is designed by lego, especially we used LEGO MINDSTORMS Education Core Set(Serial number 45544) and other LEGO EV3 sets: EV3 Expansion Set, EV3 Homeschool Combo Pack and others. You can view all of the LEGO EV3 sets by this link: <a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">BrickLink[1]</a>. Robot's wheels are taken from LEGO SPIKE Prime set and its expansion set(serial numbers 45678-1 and  45680-1). </p> </br>
   
 <p>   For better stability we used differential with two motors at the rear axle and steering control as required in the rules, our robot's size is 24.5cm (length); 14cm(width) and 29cm(height). We constructed the robot as small as possible, so its projection doesn't interfere during parking. </p>
 
@@ -79,10 +79,10 @@ CONTENT
 The base of our chassis design comes from parallel steering model geometry. Wheels that are connected to the steering control always turn on the same angle. However, last year we used Pro-Akkerman steering model geometry. The difference is in the angle of the wheels. Pro-Akkerman makes inner wheel turn more than outer wheel, because distances that inner and outer wheels go are dissimilar(while turning).
 <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/akkermanangles.jpg" alt="Ackermann Design">
 
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="550" height="386" alt="Ackermann Design">
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="500" height="350" alt="Ackermann Design">
 With a parallel steering model, the inner wheel does not align with its natural turning radius and tends to scrub against to surface, causing potential danger for the stability. Akkerman system might look better and <B>it is</B>, but not for a small robot. You see, Akkerman steering model was created for a bigger and more massive things like cars, that weight tons and friction with the road is high and triggers scrubbing. Our small robot weights ~0,8 kilograms and friction with the surface is insignificant. If we gonna use Akkerman in order to solve this problem, it may have opposite effect and inner wheels will slip while turning.
 
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalbalance.jpg">
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalbalance.jpg" width="600">
 
 Also, Akkerman is not efficient, when it comes to low speed in Lego robots. Our components are not professional and expensive like big companies use, so our components have gaps in linkages and connectors. At low speeds and small steering angles, these gaps can become comparable to intended turning angle itself. For example, if we are gonna give command to turn on 5 degrees, robot may not turn at all and it ruins microcontrolling
 ### Weight distribution
@@ -105,7 +105,7 @@ The Pixy camera is used to detect obstacles and it captures visual data like X a
 Odometry is utilized to align the robot to the center by combining the Gyro sensor’s PD regulator and odometry coordinates. A new PD regulator ensures smooth and precise alignment. This process corrects the robot’s position and orientation relative to the centerline straightforward zones. Aligning to the center is crucial because it compensates for the Pixy camera’s limited view angle, ensuring that the camera accurately detects obstacles or paths ahead. This alignment improves the robot’s navigation accuracy and stability during operation and improves Pixy camera's view angle so it can always detect the objects and view it.
 
 ### Motor selection
-  We have a choice between 2 types of LEGO motors: large motor and medium motor, the large motor is powerful but the speed is lower, the medium motor is not that powerful but have a great speed. The comparison can be viewed by this link: <a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/</a>. According to <a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research:</a> 
+  We have a choice between 2 types of LEGO motors: large motor and medium motor, the large motor is powerful but the speed is lower, the medium motor is not that powerful but have a great speed. The comparison can be viewed by this link: <a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a>. According to <a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a> 
 
 * Large servo motor (actuator) - maximum operating speed of 170 rpm, torque of 0.2 Nm and stopping torque of 0.4 Nm. It is positioned in the engine case an integrated encoder, a rotation meter, whose step is 1 degree of rotation and least sampling time 0.001 s.Also the power and speed is regulated by gear wheels and the size of the wheels. We choosed smaller wheels in steering mechanism because they do not move the robot, the only moves its trajectory.
 * Medium-size servo motor - maximum speed of 250 rpm, running torque 0.08 Nm and stopping torque of 0.12 Nm, also with integrated encoder, identical to that of a large engine.
@@ -115,7 +115,7 @@ Odometry is utilized to align the robot to the center by combining the Gyro sens
 </br>
 Also the wheels have low coefficient of friction to avoid loss of energy, but for wheels in the rear axles it will be better to choose wheels with a bit high cofficient of friction to avoid slipping of wheels. The rear wheels are bigger than wheels in front axle to have a better stability, movement control and the speed. It will be better to choose little smaller rear wheels than our. 
 </br>
-  The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame" (tag: @QZOFlame)</a>.
+  The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>.
    
    * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/instruction.pdf)
    * [3D model of Pixy Camera_Case](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/3D_models/README.md) <br> (used application AutoCAD)
@@ -127,7 +127,7 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
 
 ## Power Management and Choice of Power Source
 
-The core of our robot is the [EV3 Programmable Brick](https://pybricks.com/ev3-micropython/startbrick.html).  
+The core of our robot is the <a href="(https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick[5]</a> 
 Its power comes from a **rechargeable 10V Lithium Battery**.  
 We decided to use a rechargeable battery instead of 6 AA batteries.  
 
@@ -137,7 +137,7 @@ Even rechargeable AA batteries (such as GP types) require additional adapters fo
 
 The EV3 P-Brick has **4 ports for motors** and **4 ports for sensors**.  
 Power consumption details for motors and sensors can be found here:  
-[EV3 Current Consumption Measurement](https://www.dexterindustries.com/ev3-current-consumption-measurement/).
+<a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
 
 <table>
 <tr>
@@ -264,7 +264,7 @@ Our robot was almost built only by LEGO details except camera and we can change 
 
 -->
 # Obstacle management
-  For the obstacle detection we used Pixy2 camera and PixyMon v2 application to configure it. To use it in LEGO MINDSTORMS application you need to install special library, because it is third-party device. All of the downloads are able in official site of Pixy2 <a href="https://pixycam.com/downloads-pixy2/">https://pixycam.com/downloads-pixy2/</a>.We get x y coordinates on the field from the Pixy camera by placing the robot on two points along the correct trajectory of robot (If the pillar is red, it should go around on the right, if it is green, on the left).From the obtained value of pillars and robot(x,y coordinates) we calculate a linear function by two points (you can calculate it by the link:) <a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points.</a> This function is approximate scheme or way of how our robot should move in order to bypass pillars. Every straightforward section has its own coordinate center and 6  possible locations of pillars. Robot changes its odometry coordinate when he passes second line(blue or orange, depends on a direction). Corner sections do not include odometry system, because it doesn't have obstacles there.
+  For the obstacle detection we used Pixy2 camera and PixyMon v2 application to configure it. To use it in LEGO MINDSTORMS application you need to install special library, because it is third-party device. All of the downloads are able in official site of Pixy2 <a href="https://pixycam.com/downloads-pixy2/">Pixy[7]</a>.We get x y coordinates on the field from the Pixy camera by placing the robot on two points along the correct trajectory of robot (If the pillar is red, it should go around on the right, if it is green, on the left).From the obtained value of pillars and robot(x,y coordinates) we calculate a linear function by two points (you can calculate it by the link:) <a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points[8].</a> This function is approximate scheme or way of how our robot should move in order to bypass pillars. Every straightforward section has its own coordinate center and 6  possible locations of pillars. Robot changes its odometry coordinate when he passes second line(blue or orange, depends on a direction). Corner sections do not include odometry system, because it doesn't have obstacles there.
   </br> </br>
 <table>
 <tr>
