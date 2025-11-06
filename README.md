@@ -126,7 +126,7 @@ Also the wheels have low coefficient of friction to avoid loss of energy, but fo
 
 </br>
 
-### Power Management and Choice of Power Source
+### Power management and choiсe of power source
 
 The core of our robot is the <a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick[5]</a> 
 Its power comes from a **rechargeable 10V Lithium Battery**.  
