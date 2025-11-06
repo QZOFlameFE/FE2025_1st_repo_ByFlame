@@ -36,7 +36,7 @@ CONTENT
   * [Camera position](#camera-position)
   * [Motor selection](#motor-selection)
 * [**Power and sense management**](#Power-and-sense-management)
-  * [Power management and choise of power source](#Power-management-and-choise-of-power-source)
+  * [Power management and choiсe of power source](#Power-management-and-choiсe-of-power-source)
   * [Sense management](#sense-management)
 * [**Obstacle management**](#obstacle-management)
   * [Parking pasition](#parking-position)
