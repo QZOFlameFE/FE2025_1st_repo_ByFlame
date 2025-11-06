@@ -142,13 +142,13 @@ Power consumption details for motors and sensors can be found here:
 <table>
 <tr>
 <td align="center">
-<img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="700">
+<img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="500">
 </td>
 </tr>
 <tr>
 <td align="center">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="600">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="600">
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="300">
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="300">
   
 </td>
 </tr>
