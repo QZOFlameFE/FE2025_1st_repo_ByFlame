@@ -41,6 +41,7 @@ CONTENT
 * [**Obstacle management**](#obstacle-management)
   * [Parking pasition](#parking-position)
   * [Kalman Filter](#kalman-filter)
+  * [Ultrasonic rotation control](#ultrasonic-rotation-control)
 * [**Pictures**](#pictures)
   * [Robot Photos](#robot-photos)
   * [Team Photos](#team-photos)
@@ -412,6 +413,34 @@ In this graph you can see how error of odometry slowly rises by one minute compa
   <p>
     How we use Kalman Filter? It compares 2 values from odometry and ultrasonic. In case difference is negligible, special coefficient <b>Trust</b> will rise. Normally it is close to 1, so robot will move and trust to Ultrasonics values, but if difference between values are too big or it changes too fast, trust will sharply decline. For example, Ultrasonic can detect the obstacle and its value will decrease, so with trusts downfall, robot will rely on Odometry system.
   </p>
+#### Ultrasonic rotation control 
+  In most of cases, 3 motors are enough for FE category, but we decided to use last one too in order to improve flexibility of our robot to a hard conditions, that is why last motor rotates Ultrasonic sensor by 180 
+  degrees horizontally, increasing view range. How it works? When robot drives toward red pillar, he has to bypass it from right, but if driving direction is clock wise, ultrasonic will be pointed to the left, which means it will detect pillar and potentially it can be dangerous. That is why whenever Ultrasonic can detect pillar, our 4th motor will turn it to the opposite side, inner wall until he bypasses pilar. This system has similarities with LIDAR system.
+  <table>
+  <tr>
+    <th width=33%>Pros / Cons</th>
+    <th width=33%>
+      Stationary Ultrasonic
+    </th>
+    <th width=33%>
+      Ultrasonic rotation control
+    </th>
+  </tr>
+
+  <tr>
+    <td><b>Pros</b></td>
+    <td align=center></td>
+    <td align=center></td>
+  </tr>
+
+  <tr>
+    <td><b>Cons</b></td>
+    <td align=center></td>
+    <td align=center></td>
+  </tr>
+
+</table>
+
 </div>
 
 # <hr/>
