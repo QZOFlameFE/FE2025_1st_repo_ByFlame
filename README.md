@@ -87,7 +87,7 @@ With a parallel steering model, the inner wheel does not align with its natural 
 
 Also, Akkerman is not efficient, when it comes to low speed in Lego robots. Our components are not professional and expensive like big companies use, so our components have gaps in linkages and connectors. At low speeds and small steering angles, these gaps can become comparable to intended turning angle itself. For example, if we are gonna give command to turn on 5 degrees, robot may not turn at all and it ruins microcontrolling
 ### Weight distribution
-  As our robot is a self-driving car with steering mechanism and differential in rear axle we need to make our robot slight heavy, and distribute weight a bit behind the center of our robot to prevent the wheels from slipping. The slipping of the wheels in rear axle impacts our odometry and the programm.Also, we placed the EV3 P-Brick in the center of the robot to distribute the weight evenly, as the brick is a relatively heavy component(275g). Pixy camera is located quite behind the robot,that's why it don't maintain balance. To maintain balance, we used metal balls(you can see from instruction of our robot) from the Lego set and placed them in front of the robot. This way, we avoid the robot from wobbling.
+  As our robot is a self-driving car with steering mechanism and differential in rear axle we need to make our robot slight heavy, and distribute weight a bit behind the center of our robot to prevent the wheels from slipping. The slipping of the wheels in rear axle impacts our odometry and the programm.Also, we placed the EV3 P-Brick in the center of the robot to distribute the weight evenly, as the brick is a relatively heavy component(275g). Pixy camera is located quite behind the robot,that's why it don't maintain balance.
   
 ### Camera position
   Our camera places as much higher(28cm) and behind(7cm from center of the robot) as its possible for better view and obstacle control. It also inclined a bit down to view blocks that are close to robot and limit the view for better obstacle management.
@@ -492,6 +492,9 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelstyle.jpeg)
   </td>
   <td width=50%>
+    <td width=50%>
+  
+</td>
     
   ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalstyle2.jpeg)
     
