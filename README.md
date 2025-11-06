@@ -655,14 +655,14 @@ Since LEGO platform have numerous limitations it would be better to switch on Ra
 
 <h1>Used links</h1>
 
-<a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">BrickLink[1]</a>
-<a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a>
-<a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a>
-<a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>
-<a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick[5]</a>
-<a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
-<a href="https://pixycam.com/downloads-pixy2/">Pixy[7]</a>
-<a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points[8].</a>
+<a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">BrickLink[1]</a> <br>
+<a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a> <br>
+<a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a> <br>
+<a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a> <br>
+<a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick[5]</a> <br>
+<a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a> <br>
+<a href="https://pixycam.com/downloads-pixy2/">Pixy[7]</a> <br>
+<a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points[8].</a> <br>
 <!-- 
 
 
