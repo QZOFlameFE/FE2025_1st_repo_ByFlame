@@ -570,7 +570,7 @@ In this graph you can see how error of odometry slowly rises by one minute compa
 # Performance videos
 ### Open Challenge: https://www.youtube.com/watch?v=7BwItxD5PFI&ab_channel=QZOFlame </br>
 ### Obstacle Challenge: https://www.youtube.com/watch?v=Dp4Yk0vj5d8&ab_channel=QZOFlame </br>
-### Robot parts discussion: https://www.youtube.com/watch?v=wA9YH8HjfyY&ab_channel=QZOFlame</br>
+### Robot parts discussion:https://youtu.be/g_3ys_mIVyQ?si=v_OcqGlr-rYw7DHp</br>
 # <hr/>
 
 
