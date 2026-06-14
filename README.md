@@ -33,9 +33,10 @@ CONTENT
 * [**Mobility and mechanical design**](#mobility-and-mechanical-design)
   * [Technical specifications and footprint constraints](#technical-specifications-and-footprint-constraints)
   * [Motor selection and actuator architecture](#motor-selection-and-actuator-architecture)
-  * [Chassis design](#chassis-design)
-  * [Weight distribution](#weight-distribution)
-  * [Camera position](#camera-position)
+  * [Drivetrain evolution and gear ratio optimization](#drivetrain-evolution-and-gear-ratio-optimization)
+  * [Steering geometry and mechanical backlash mitigation](#steering-geometry-and-mechanical-backlash-mitigation)
+  * [Wheel selection and odometry accuracy](#wheel-selection-and-odometry-accuracy)
+  * [Center of mass and weight distribution](#center-of-mass-and-weight-distribution)
   
 * [**Power and sense management**](#Power-and-sense-management)
   * [Power management and choiсe of power source](#Power-management-and-choiсe-of-power-source)
@@ -96,6 +97,9 @@ CONTENT
 
 ### Motor selection and actuator architecture
   We have a choice between 2 types of LEGO motors: large motor and medium motor. The comparison can be viewed by this link: <a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a>. According to <a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a> 
+ 
+ <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/medium%20motor.jpg width="40%">   <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Large%20motor.jpg width="48%">
+  
 
 <p> The choice of actuators was guided by an assessment of the LEGO motor specification and performance targets defined by the research team. They needed to select between two main actuator types, namely the Large Motor and the Medium Motor.</p>
 
@@ -137,60 +141,177 @@ In terms of technical performance parameters, the fundamental properties of thes
   </tbody>
 </table>
 
-### Engineering analysis & final Selection
+#### Engineering analysis & final Selection
 <p> Although the Large Motor offers better torque performance (0.20 Nm compared to 0.08 Nm), it is worth noting that the Medium Motor was used in building the whole robot because of two critical reasons identified from our study:</p>
 <ul>
    <li> <b> Efficiency of Space and Collision Prevention:</b> The large motor has a large casing, adding to the robot’s size. Due to the restrictions that prohibit collision with traffic pillars, which are painted red and green in the WRO 2026 contest, making the robot as small as possible was essential. The small size of the medium motor ensured that the robot would have a small footprint.</li>
    <li> <b>Speed Performance:</b> The medium motor ensures 47% higher top speed operation than the large one (250 rpm vs. 170 rpm). It is crucial for winning time in the easy zones of the race track.</li>
 </ul>
 
-### Mitigating the Torque Deficit via Dual-Motor Coupling
+#### Mitigating the torque deficit via dual-motor coupling
 <p>The primary risk of using the Medium Motor for the drivetrain was its low stall torque (0.12 Nm), which previously caused single-motor configurations to stall during startup.
 
-To resolve this without reverting to the bulky Large Motor, the team engineered a **mechanically coupled dual-motor rear axle**. By synchronizing two Medium Motors into a single drive gear system, the operational torque was effectively doubled to approximately 0.16 Nm, while keeping the high 250 rpm limit and a highly compact chassis layout.</p> 
-  
-  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/medium%20motor.jpg> 
-</br>
-Also the wheels have low coefficient of friction to avoid loss of energy, but for wheels in the rear axles it will be better to choose wheels with a bit high cofficient of friction to avoid slipping of wheels. The rear wheels are bigger than wheels in front axle to have a better stability, movement control and the speed. It will be better to choose little smaller rear wheels than our. 
-</br>
+To resolve this without reverting to the bulky Large Motor, the team engineered a **mechanically coupled dual-motor rear axle**. By synchronizing two Medium Motors into a single drive gear system, the operational torque was effectively doubled to approximately 0.16 Nm, while keeping the high 250 rpm limit and a highly compact chassis layout.
+
+The next two medium motors are assigned to the auxiliary systems. One motor controls the steering system while the other controls the sweeping mechanism of the ultrasonic sensor placed at the front end.</p> 
+
+### Drivetrain evolution and gear ratio optimization
+
+There was several revisions done on the drivetrain in order to compensate the tradeoff between speed and precision:
+
+<table>
+  <thead>
+    <tr>
+      <th>Iteration</th>
+      <th>Configuration</th>
+      <th>Gear Ratio</th>
+      <th>Performance Summary / Engineering Trade-off</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Version 1</b></td>
+      <td>1x Medium Motor</td>
+      <td>1:4 (Speed Up)</td>
+      <td><b>Failure.</b> Insufficient torque. The robot failed to overcome static friction and could not consistently launch without manual assistance.</td>
+    </tr>
+    <tr>
+      <td><b>Version 2</b></td>
+      <td>2x Medium Motors</td>
+      <td>1:3 (Speed Up)</td>
+      <td>Optimized strictly for raw velocity during the empty track phase. High top speed but lacked fine positioning control.</td>
+    </tr>
+    <tr>
+      <td><b>Version 3</b></td>
+      <td>2x Medium Motors</td>
+      <td>3:1 (Torque Multiplier)</td>
+      <td>Gears reversed to maximize torque and angular resolution. Highly accurate but severely limited overall lap time.</td>
+    </tr>
+    <tr>
+      <td><b>Version 4 (Final Design)</b></td>
+      <td>2x Medium Motors</td>
+      <td>(24T→8T)(20T→28T)</td>
+      <td><b>Success.</b> Integrated a mechanical differential for smooth cornering. This hybrid ratio balances torque overhead via the dual-motor setup while maintaining high speed.</td>
+    </tr>
+  </tbody>
+</table>
+
+The drivetrain configuration went through numerous R&D iterations to address the compromise between peak linear speed and low speed accuracy.
+
+The current Version 4 configuration employs a specially designed two-stage compound gear train in order to enhance the Medium Motor's optimal power output range:
+* **First Stage (Speed Enhancer):** There is a direct transmission from the 24-teeth driver gear to the 8-teeth follower gear. The $1:3$ step up provides maximum rotational speed.
+* **Second Stage (Torque Compensator):** The motion is conveyed by $1:1$ link to the 20-teeth gear, driving the 28-teeth gear that feeds the mechanical differential. In this way, the $20:28$ ($5:7$) step down mitigates the maximum velocity, allowing recovering mechanical torque.
+
+As a result of such optimization, torque consumption is balanced with physical acceleration. The average stable velocity in this case is **0.25 m/s** (1 meter per 4 seconds) in competition condition with payload. Such modification fully excludes any stress on the motor preventing heat generation.
+
+### Steering geometry and mechanical backlash mitigation
+
+#### Comparison between parallel steering system and Ackermann system 
+The base of our chassis design comes from parallel steering model geometry. Wheels that are connected to the steering control always turn on the same angle. However, last year we used Pro-Akkerman steering model geometry. The difference is in the angle of the wheels. Pro-Akkerman makes inner wheel turn more than outer wheel, because distances that inner and outer wheels go are dissimilar(while turning).
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/akkermanangles.jpg" alt="Ackermann Design">
+
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="500" height="350" alt="Ackermann Design">
+
+With a parallel steering model, the inner wheel does not align with its natural turning radius and tends to scrub against to surface, causing potential danger for the stability.
+<p>Initially, the Ackermann steering system was used to provide smooth and efficient turns without slippage at high speeds. However, it was determined during tests that the Ackermann system necessitated a considerably bigger turning radius, making the robot highly vulnerable in cases where immediate and quick evasive action was necessary due to its obstacle arrangement.
+
+To facilitate immediate direction switching, it was decided to adopt the Parallel Steering Geometry system for the chassis. Although the Parallel Steering Geometry system results in a small amount of friction for heavy vehicles, it has been shown experimentally that for such a light vehicle like this one with a mass of 0.8 kilograms, the friction is virtually non-existent. </p>
+
+#### Backlash (Play) elimination
+<p> The LEGO system, by nature, has mechanical tolerance and clearance issues . At low operating speed, the mechanical tolerance issue could be comparable to that of the steering commands itself (i.e., commanding 5 degrees but achieving 0 degree turn). </p>
+
+This issue was solved entirely through structural component selection rather than software calibration:
+* **Option A (High-Friction Black Connectors):** Provides rigid, zero-backlash mating but increases structural resistance, making the steering servo work harder.
+* **Option B (Low-Friction Grey Pins):** Allows effortless steering rotation but introduces severe mechanical play (backlash).
+
+**Engineering Decision:** *Option A was selected.* By eliminating mechanical play structurally, steering predictability was restored. 
+
+
+### Wheel selection and odometry accuracy
+
+<p> Wheel choice is directly linked to odometry accuracy because any slip from the wheels will result in inaccuracies from the wheel encoders that determine the location. </p> 
+
+* **Drive Rear Axle:** The robot is designed using LEGO SPIKE Prime wheels with a diameter of 5.6 cm. In previous designs, LEGO EV3 tires were used; they exhibited high coefficients of slippage when accelerating suddenly due to their design. LEGO SPIKE Prime tires are made of a unique rubber material, which provides better traction on the surface.
+  * **Trade-off:** Switching to 5.6 cm tires resulted in a somewhat lower theoretical maximum speed because of the wheel size, but the trade-off was made for better accuracy in tracking.
+  * **Experimental Evidence:** The use of SPIKE Prime tires, compared to EV3 tires, lowered the overall drift in distance traveled from 10–15 cm to 3–5 cm over three laps.
+ 
+* **Front Steering Axle:** Small wheels with a diameter of 2.4 cm were chosen to mount on the robot. Due to the size of the wheels and their limited angle of steering, there is no chance of contact between the tires and the sides of the chassis or the Intelligent EV3 Brick.
+
   The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>.
    
    * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/instruction.pdf)
    * [3D model of Pixy Camera_Case](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/3D_models/README.md) <br> (used application AutoCAD)
 
-### Chassis design
+### Center of mass and weight distribution
+  The placement of heavy elements was extensively iterated to equalize the forces acting normally on both front and rear axles.
 
-The base of our chassis design comes from parallel steering model geometry. Wheels that are connected to the steering control always turn on the same angle. However, last year we used Pro-Akkerman steering model geometry. The difference is in the angle of the wheels. Pro-Akkerman makes inner wheel turn more than outer wheel, because distances that inner and outer wheels go are dissimilar(while turning).
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/akkermanangles.jpg" alt="Ackermann Design">
+Previous designs had a heavy Intelligent EV3 Brick (275 g) located towards the back, along with the sensors. It meant that the Center of Gravity was displaced rearwards, thereby raising the front steering axle. Since the front wheels would be deprived of normal pressure, they started to slip during turning maneuvers, making the commands meaningless. Although additional weights could be installed in front for a temporary fix, it would increase the overall vehicle mass and strain the power train.
 
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="500" height="350" alt="Ackermann Design">
-With a parallel steering model, the inner wheel does not align with its natural turning radius and tends to scrub against to surface, causing potential danger for the stability. Akkerman system might look better and <B>it is</B>, but not for a small robot. You see, Akkerman steering model was created for a bigger and more massive things like cars, that weight tons and friction with the road is high and triggers scrubbing. Our small robot weights ~0,8 kilograms and friction with the surface is insignificant. If we gonna use Akkerman in order to solve this problem, it may have opposite effect and inner wheels will slip while turning.
-
+In the current design, the Intelligent EV3 Brick is moved forwards and placed above the mid-front part of the vehicle. It means that proper weight distribution allows applying enough normal force to the front tires so they can provide adequate mechanical grip when used for steering, while enough force will remain to be applied to the high-grip rear SPIKE wheels. Additional weights become unnecessary in the current configuration.
 <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalbalance.jpg" width="600">
-
-Also, Akkerman is not efficient, when it comes to low speed in Lego robots. Our components are not professional and expensive like big companies use, so our components have gaps in linkages and connectors. At low speeds and small steering angles, these gaps can become comparable to intended turning angle itself. For example, if we are gonna give command to turn on 5 degrees, robot may not turn at all and it ruins microcontrolling
-### Weight distribution
-  As our robot is a self-driving car with steering mechanism and differential in rear axle we need to make our robot slight heavy, and distribute weight a bit behind the center of our robot to prevent the wheels from slipping. The slipping of the wheels in rear axle impacts our odometry and the programm.Also, we placed the EV3 P-Brick in the center of the robot to distribute the weight evenly, as the brick is a relatively heavy component(275g). Pixy camera is located quite behind the robot,that's why it don't maintain balance.
-  
-### Camera position
-  Our camera places as much higher(28cm) and behind(7cm from center of the robot) as its possible for better view and obstacle control. It also inclined a bit down to view blocks that are close to robot and limit the view for better obstacle management.
-</div>
-
-### Gyro sensor PD regulator and turns, angular rotation
-LEGO EV3 Gyro Sensor is used to measure the angular rotation of the robot, allowing precise detection of turns. This data is fed into a PD regulator (Proportional-Derivative regulator), which ensures smoother control during turns, such as achieving an exact 90-degree rotation.  Change in the PD coefficients with dependence to the steering and its PID regulator enhances the robot’s maneuverability. Additionally, the gyro sensor is a significant part in the robot’s odometry system, providing opportunities to track its orientation and improve overall navigation accuracy.
-
-### Steering control
-The PID regulator controls the steering mechanism by setting a specific variable called “aim”, which represents the target position or direction. The PID controller is used to set the steering motor encoder and compare its current position to the value of “aim.” Based on this comparison, the PID algorithm sets the motor’s movement to smoothly align the steering mechanism with the desired direction. This ensures precise and stable control over the robot’s steering, allowing it to maintain accurate and smooth maneuvers during operation.
-
-### Bypassing obstacles
-The Pixy camera is used to detect obstacles and it captures visual data like X and Y coordinates, signature and processes it to identify objects. Once an obstacle is detected, the camera's data used to manipulate robot’s steering system. By specific formula that uses 3 parameters(signature, X and Y coordinate) values are setted and then transmitted to PID regulator of steering mechanism by setting proportional, integral, and derivative values to smoothly navigate around the obstacles. This approach allows the robot to bypass obstacles in real-time, improving its mobility and efficiency in dynamically.
-
-### Aligning robot to the center
-Odometry is utilized to align the robot to the center by combining the Gyro sensor’s PD regulator and odometry coordinates. A new PD regulator ensures smooth and precise alignment. This process corrects the robot’s position and orientation relative to the centerline straightforward zones. Aligning to the center is crucial because it compensates for the Pixy camera’s limited view angle, ensuring that the camera accurately detects obstacles or paths ahead. This alignment improves the robot’s navigation accuracy and stability during operation and improves Pixy camera's view angle so it can always detect the objects and view it.
 
 
 # <hr/>
 
+# Power and sensor architecture
+
+### Power architecture and source selection
+Powering the sub-electronics on board the robot is done only by the<a href="https://pybricks.com/ev3-micropython/startbrick.html"> **LEGO MINDSTORMS EV3 Rechargeable DC Battery Pack**</a>  (Nominal 7.4V, model number 60530) in an untouched form. The use of third-party lithium batteries or any other non-standard modifications was not considered at all for reasons of safety and durability of equipment.
+
+Empirically measuring during track tests, it was discovered that the most optimal interval for operation in which the sensors show reliable readings and motor functions operate deterministically falls within the range of **7.6V to 8.2V**. 
+
+The EV3 P-Brick has **4 ports for motors** and **4 ports for sensors**.  
+Power consumption details for motors and sensors can be found here:  
+<a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
+
+Considering the potential decrease in battery voltage that may affect the repeatability of control signals of the steering controller and velocity curves, it was decided that it must be adhered to:
+
+<table>
+  <thead>
+    <tr>
+      <th>Operational Metric</th>
+      <th>Voltage Range</th>
+      <th>Engineering Impact & Strategic Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Peak Performance Window</b></td>
+      <td>7.6V - 8.2V</td>
+      <td>Ensures maximum torque overhead for the dual-motor rear axle and clear, stable data lines for the UART sensors.</td>
+    </tr>
+    <tr>
+      <td><b>Voltage Drop Risk Zone</b></td>
+      <td>Below 7.6V</td>
+      <td>Causes inconsistent acceleration and subtle micro-steering deviations, negatively impacting dead reckoning.</td>
+    </tr>
+    <tr>
+      <td><b>Mitigation Strategy</b></td>
+      <td>Active Hot-Swapping</td>
+      <td>The team uses a parallel logistics system whereby one pack drives the current vehicle, whereas a fully charged backup pack remains on standby. Once telemetry indicates that the main pack voltage falls to around 7.6 volts, it is swiftly swapped with the hot backup pack.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div align="center">
+  <img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="45%" alt="EV3 Power Terminal Mapping">
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="25%" alt="Official EV3 DC Rechargeable Battery Pack">
+  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="25%" alt="Battery Integration Enclosure">
+</div>
+
+
+
+*Detailed structural routing diagrams and current benchmarks are cataloged within our [Electrical Wiring Diagrams Portfolio](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/schemes/README.md).*
+
+### Controller platform and software environment selection
+The control center block is the LEGO EV3 Intelligent Brick. Even though many expert teams tend to evolve into other text-oriented programming languages, the main navigation control program is entirely coded through **the LEGO MINDSTORMS EV3-G Graphical Programming Language**.
+
+Some of the key benefits associated with using EV3-G for software development include:
+
+* **Fast Strategy Adjustments:** Given that all commands are organized in a drag-and-drop manner, the coding process becomes quick and allows us to make necessary adjustments within a few seconds. This can be extremely useful during competitions when it is important to change some software parameters in accordance with newly discovered field conditions or rules.
+* **Efficiency of Firmware Code Execution:** All EV3-G functions communicate directly with the LEGO firmware drivers, which reduces all possible delays or missteps caused by cross-compilation and micro-Python syntax errors.
+* **Efficient Sensor Handling:** Sensor-related operations involve hardware interrupts that facilitate quick calibration.
+* 
 # Power and sense management 
 
 </br>
@@ -205,9 +326,7 @@ Despite AA batteries having a higher capacity, they can still be inconvenient an
 
 Even rechargeable AA batteries (such as GP types) require additional adapters for charging, and usually only 2–3 cells can be charged at a time, whereas the robot requires all 6.  
 
-The EV3 P-Brick has **4 ports for motors** and **4 ports for sensors**.  
-Power consumption details for motors and sensors can be found here:  
-<a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
+
 
 <table>
 <tr>
