@@ -11,9 +11,9 @@ CONTENT
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;"
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;">
-<h1 align = center> Future Engineers 2025 </h1>
+<h1 align = center> Future Engineers 2026 </h1>
 <h2 align = center> Team name: QYZYLORDA Flame </h2>
-<h2 align = center> Team members: Sadu Yernur, Bizhanuly Aidar </h2>
+<h2 align = center> Team members: Sadu Yernur, Sadu Ayanur </h2>
 <h2 align = center> email: qzo.flame.fe2024@gmail.com </h2>
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;"
 -webkit-background-clip: text;
@@ -24,7 +24,7 @@ CONTENT
 </div>
 </div>
 </div>
-<h2 align = center> Our team already participated in the last 2024 season and we won second place in FE category</h2>
+<h2 align = center>Our team already participated in the 2024 and 2025 seasons, and we won second place in the FE category in 2024.</h2>
 <div align = center>
 <img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Team_photos/2024.jpeg"/>
 </div>
