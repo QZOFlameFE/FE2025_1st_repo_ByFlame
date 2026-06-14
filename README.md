@@ -30,11 +30,13 @@ CONTENT
 </div>
 
 # Contents 
-* [**Mobility management**](#mobility-management)
+* [**Mobility and mechanical design**](#mobility-and-mechanical-design)
+  * [Technical specifications and footprint constraints](#technical-specifications-and-footprint-constraints)
+  * [Motor selection and actuator architecture](#motor-selection-and-actuator-architecture)
   * [Chassis design](#chassis-design)
   * [Weight distribution](#weight-distribution)
   * [Camera position](#camera-position)
-  * [Motor selection](#motor-selection)
+  
 * [**Power and sense management**](#Power-and-sense-management)
   * [Power management and choiсe of power source](#Power-management-and-choiсe-of-power-source)
   * [Sense management](#sense-management)
@@ -56,14 +58,31 @@ CONTENT
 
 
 -->
-# Mobility Management
+# Mobility and mechanical design
 
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalscheme.jpg)
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEfinalpixyview.jpg)
 <p>   Our robot is designed by lego, especially we used LEGO MINDSTORMS Education Core Set(Serial number 45544) and other LEGO EV3 sets: EV3 Expansion Set, EV3 Homeschool Combo Pack and others. You can view all of the LEGO EV3 sets by this link: <a href="https://www.bricklink.com/catalogList.asp?catType=S&catString=166.59.800">BrickLink[1]</a>. Robot's wheels are taken from LEGO SPIKE Prime set and its expansion set(serial numbers 45678-1 and  45680-1). </p> </br>
-  
-<p>   For better stability we used differential with two motors at the rear axle and steering control as required in the rules, our robot's size is 24.5cm (length); 14cm(width) and 29cm(height). We constructed the robot as small as possible, so its projection doesn't interfere during parking. </p>
 
+### Technical specifications and footprint constraints
+<p>   The mechanical design of the robot is governed by the WRO 2026 Future Engineers guidelines, which state that the robot must first complete three laps around the course, while avoiding red and green obstacles, and then perform parallel parking. </p>  <br>
+
+<p> In order to provide maximum mobility and avoid collisions with traffic objects, the robot was made to have the smallest possible footprint. The final dimensions are:</p>
+<ul>
+  <li>
+    Length: 24.5 cm
+  </li>
+  <li>
+    Width: 14.0 cm
+  </li>
+  <li>
+    Height: 29.0 cm
+  </li>
+  <li>
+   Total Weight: ~0.8 kg
+  </li>
+</ul> <br>
+<p> With this structural volume kept to a minimum, there is a considerably larger clearance margin for the robot while performing a turn between two tightly-spaced pillars and successfully parking itself.</p>
 <div align=center>
 <table>
 <tr>
@@ -74,6 +93,70 @@ CONTENT
 </tr>
 </table>
 </div>
+
+### Motor selection and actuator architecture
+  We have a choice between 2 types of LEGO motors: large motor and medium motor. The comparison can be viewed by this link: <a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a>. According to <a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a> 
+
+<p> The choice of actuators was guided by an assessment of the LEGO motor specification and performance targets defined by the research team. They needed to select between two main actuator types, namely the Large Motor and the Medium Motor.</p>
+
+In terms of technical performance parameters, the fundamental properties of these actuators are as follows:
+<table>
+  <thead>
+    <tr>
+      <th>Technical Specification</th>
+      <th>LARGE Motor (Actuator)</th>
+      <th>MEDIUM-Size Motor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Maximum Operating Speed</b></td>
+      <td>170 rpm</td>
+      <td><b>250 rpm</b> (Higher peak velocity)</td>
+    </tr>
+    <tr>
+      <td><b>Running Torque</b></td>
+      <td>0.20 Nm</td>
+      <td><b>0.08 Nm</b> (Lower baseline)</td>
+    </tr>
+    <tr>
+      <td><b>Stall (Stopping) Torque</b></td>
+      <td>0.40 Nm</td>
+      <td><b>0.12 Nm</b> (Lower baseline)</td>
+    </tr>
+    <tr>
+      <td><b>Integrated Encoder</b></td>
+      <td>Yes (1° resolution, 0.001s sampling)</td>
+      <td>Yes (1° resolution, 0.001s sampling)</td>
+    </tr>
+    <tr>
+      <td><b>Form Factor / Volume</b></td>
+      <td>Large, bulky housing</td>
+      <td><b>Compact, space-saving design</b></td>
+    </tr>
+  </tbody>
+</table>
+
+### Engineering analysis & final Selection
+<p> Although the Large Motor offers better torque performance (0.20 Nm compared to 0.08 Nm), it is worth noting that the Medium Motor was used in building the whole robot because of two critical reasons identified from our study:</p>
+<ul>
+   <li> <b> Efficiency of Space and Collision Prevention:</b> The large motor has a large casing, adding to the robot’s size. Due to the restrictions that prohibit collision with traffic pillars, which are painted red and green in the WRO 2026 contest, making the robot as small as possible was essential. The small size of the medium motor ensured that the robot would have a small footprint.</li>
+   <li> <b>Speed Performance:</b> The medium motor ensures 47% higher top speed operation than the large one (250 rpm vs. 170 rpm). It is crucial for winning time in the easy zones of the race track.</li>
+</ul>
+
+### Mitigating the Torque Deficit via Dual-Motor Coupling
+<p>The primary risk of using the Medium Motor for the drivetrain was its low stall torque (0.12 Nm), which previously caused single-motor configurations to stall during startup.
+
+To resolve this without reverting to the bulky Large Motor, the team engineered a **mechanically coupled dual-motor rear axle**. By synchronizing two Medium Motors into a single drive gear system, the operational torque was effectively doubled to approximately 0.16 Nm, while keeping the high 250 rpm limit and a highly compact chassis layout.</p> 
+  
+  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/medium%20motor.jpg> 
+</br>
+Also the wheels have low coefficient of friction to avoid loss of energy, but for wheels in the rear axles it will be better to choose wheels with a bit high cofficient of friction to avoid slipping of wheels. The rear wheels are bigger than wheels in front axle to have a better stability, movement control and the speed. It will be better to choose little smaller rear wheels than our. 
+</br>
+  The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>.
+   
+   * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/instruction.pdf)
+   * [3D model of Pixy Camera_Case](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/3D_models/README.md) <br> (used application AutoCAD)
 
 ### Chassis design
 
@@ -105,21 +188,7 @@ The Pixy camera is used to detect obstacles and it captures visual data like X a
 ### Aligning robot to the center
 Odometry is utilized to align the robot to the center by combining the Gyro sensor’s PD regulator and odometry coordinates. A new PD regulator ensures smooth and precise alignment. This process corrects the robot’s position and orientation relative to the centerline straightforward zones. Aligning to the center is crucial because it compensates for the Pixy camera’s limited view angle, ensuring that the camera accurately detects obstacles or paths ahead. This alignment improves the robot’s navigation accuracy and stability during operation and improves Pixy camera's view angle so it can always detect the objects and view it.
 
-### Motor selection
-  We have a choice between 2 types of LEGO motors: large motor and medium motor, the large motor is powerful but the speed is lower, the medium motor is not that powerful but have a great speed. The comparison can be viewed by this link: <a href="https://www.eurobricks.com/forum/index.php?/forums/topic/87670-ev3-large-and-medium-motors-comparison/">Comparison of technical specifications[2]/</a>. According to <a href="https://www.researchgate.net/publication/345182894_Dynamic_analysis_modeling_and_control_of_the_LEGO_EV3_modular_mobile_platform">research[3]</a> 
 
-* Large servo motor (actuator) - maximum operating speed of 170 rpm, torque of 0.2 Nm and stopping torque of 0.4 Nm. It is positioned in the engine case an integrated encoder, a rotation meter, whose step is 1 degree of rotation and least sampling time 0.001 s.Also the power and speed is regulated by gear wheels and the size of the wheels. We choosed smaller wheels in steering mechanism because they do not move the robot, the only moves its trajectory.
-* Medium-size servo motor - maximum speed of 250 rpm, running torque 0.08 Nm and stopping torque of 0.12 Nm, also with integrated encoder, identical to that of a large engine.
-
-  
-  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/medium%20motor.jpg> 
-</br>
-Also the wheels have low coefficient of friction to avoid loss of energy, but for wheels in the rear axles it will be better to choose wheels with a bit high cofficient of friction to avoid slipping of wheels. The rear wheels are bigger than wheels in front axle to have a better stability, movement control and the speed. It will be better to choose little smaller rear wheels than our. 
-</br>
-  The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>.
-   
-   * [Building Instructions and BOM](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/instruction.pdf)
-   * [3D model of Pixy Camera_Case](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/3D_models/README.md) <br> (used application AutoCAD)
 # <hr/>
 
 # Power and sense management 
