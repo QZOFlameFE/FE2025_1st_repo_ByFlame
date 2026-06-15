@@ -808,6 +808,14 @@ All systems are connected to each other.
 We have adopted a multi-sensor fusion design rather than depending on one navigation approach since there is not any sensor which can be trusted completely while competing.
 All of the systems complement the deficiencies of each other; therefore, their performance becomes more consistent and reliable.
 
+# <hr/>
+
+# Reproducibility and GitHub Quality
+
+Our GitHub repository is structured in a way to make the project simple, understandable, and extendable. It includes the entire source code, documentation, circuit diagrams, and everything else needed in order to make our robot.
+The repository is designed in such a way that any other teams, judges, or future contributors will be able to understand how the robot was made and how its software works. All the major changes that were introduced to the project were tracked via commits to demonstrate its progression.
+The README file contains all the information about the project structure and is aimed at giving necessary details for the analysis of the robot's performance.
+
 # Pictures
 ### Robot photos
 
@@ -901,7 +909,7 @@ All of the systems complement the deficiencies of each other; therefore, their p
 
 
 ## Team Photos
-![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Team_photos/official-photos/team.jpg)
+![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Team_photos/team%20photo%20together.jpeg)
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Team_photos/workingproccess1.jpeg)
 ![alt text](https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Team_photos/workingproccess2.jpeg)
 </br>
