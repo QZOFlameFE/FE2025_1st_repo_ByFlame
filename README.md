@@ -568,6 +568,8 @@ The robot's trajectory is determined by two main situations: <br>
 ### Bypassing obstacles (when pixy camera sees a road sign (State 1)) 
 We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a linear function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
 <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/linear%20function.png> <br>
+However, now we use a quadratic function for obstacle avoidance instead of a linear one. Unlike the linear function, which requires only two points, the quadratic function needs at least three points to define the trajectory. This allows the robot to generate a smoother path when avoiding obstacles, improving motion stability and reducing the risk of hitting pillars. <br>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/quadratic%20function.png> <br>
 
 https://github.com/user-attachments/assets/eb8f1eea-5bec-42ee-9bcd-57115f89046b
 ### Align center (when pixy camera does not see road sign (State 2))
@@ -777,6 +779,8 @@ To mitigate this issue, we implemented a trust-based Kalman-inspired weighting s
 ---
 
 ## System integration rationale
+
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/sensor%20fusion%20diagram.png>
 
 The robot is conceived as an integrated system such that:
 
