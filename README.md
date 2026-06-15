@@ -557,7 +557,7 @@ This block outputs: </br>
 </tr>
 </table>
 
-## Finite State Machine (Behavioral Model of the Software)
+## Finite State Machine 
 
 Robot's behavior depends on state which is determined by the input from sensors and field location.
 The robot's trajectory is determined by two main situations: <br>
@@ -593,7 +593,7 @@ Segmented odometry
 </div>
 It determines the error between the coordinate of the robot and the center of the road and is given to the steering mechanism so that it aligns itself to the center thanks to the constant formula.
 
-## Parking position (State 3)
+### Parking position (State 3)
 
 We use ultrasonic sensor for precise parking and we already know where parking zone is, because it is located in the section where we started, but since we only have one ultrasonic and in the clockwise run ultrasonic will be pointed to the inner wall, we will have to make turn. Robot will drive till it sees orange line and will turn and align near to the outer walls, so the parking process consists of 3 steps:
 <ul>
@@ -621,7 +621,7 @@ https://github.com/user-attachments/assets/bfa87282-f41e-4c83-8d34-f1d38a4ead7e
  * [Pixy2 camera's configuration](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/README.md)
 
 
-### Kalman filter
+## Kalman filter
 Kalman Filter - an algorithm that uses a series of measurements observed over time, including statistical noise and other inaccuracies, to produce estimates of unknown variables that tend to be more accurate than those based on a single measurement, by estimating a joint probability distribution over the variables for each time-step. In other words, whole round lasts for a few minutes and our obstacle management works only thanks for odometry, but in the long term driving, uncertainty rises gradually and in the end it can be crucial to robots movements, that is why we need Kalman Filter, that can compensate error of odometry.
 
 <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Uncertaintity.jpg">
