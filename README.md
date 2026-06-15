@@ -689,6 +689,111 @@ Therefore, in order to decrease the chance of mistake, we decided to use rotatin
 
 # <hr/>
 
+# Systems Thinking and Engineering Decisions
+
+## System-level design constraints
+
+Constraints observed during robot design include:
+
+- Processor power of the EV3 Intelligent Brick
+- Limited number of sensor connections (maximum of four sensors)
+- Space restrictions for motors
+- Stability requirements in the duration of its run
+- Dependability under changes in battery voltages
+
+Such constraints played an important role in the design of hardware and software.
+
+---
+
+## Trade-offs in sensor and system design
+
+### Ultrasonic system trade-off
+
+A decision was made to deploy an ultrasonic sensor rather than multiple fixed sensors since the number of hardware components used would be reduced. Additionally, there will be less wiring and less of a burden on the limited ports of the EV3 brick. However, there is one drawback with this choice as one single ultrasonic sensor fixed in position cannot capture all directions of the surrounding area. This problem is solved through rotation, which can be done by the help of a Medium Motor.
+
+---
+
+### Pixy camera placement trade-off
+
+In the beginning, the Pixy camera was mounted with an angle of around 60°, but that would make the robot detect objects not within the competition environment, thus making for wrong obstacle detections. It was then adjusted to an angle of around 45° because it ensures accurate field-based object detections and avoids any errors.
+
+---
+
+### Algorithm trade-off (Linear or Quadratic function)
+
+Initially, we applied a linear function to our obstacle avoidance, however, we subsequently substituted the linear function with a quadratic function due to the reason that while using a linear function, abrupt movements occurred in the car; in contrast, by applying the quadratic function, we could achieve smoother movement.
+
+---
+
+## Iteration cycles (version development)
+
+### Version 1
+The first attempt was to employ a linear function to avoid obstacles, use a fixed ultrasonic distance measurement sensor, and set the Pixy camera viewing angle to about 60° for maximum coverage of the environment.
+
+The first problem with this robot had issues discovered during the run test such as unsteady steering when avoiding an obstacle, recognizing objects outside the race track, and inadequate correction for odometry error that occurred after long periods. This made navigation difficult, particularly in complex areas of the racing circuit.
+
+---
+
+### Version 2
+In the second version, several important improvements were introduced based on the issues observed in Version 1. The Pixy camera angle was reduced to approximately 45° to limit detection outside the competition field and improve focus on relevant objects. In addition, the sensor calibration procedure was refined to ensure more consistent readings under different lighting conditions and between runs. We also improved alignment using odometry to make the robot’s positioning more stable along straight sections of the track.
+
+These changes resulted in clear performance improvements, including a significant reduction in false obstacle detections and more stable and predictable navigation behavior during full run tests.
+
+---
+
+### Version 3 (current system)
+
+In the third and current version of the system, we introduced several major improvements based on the limitations observed in previous iterations. We replaced the linear obstacle avoidance approach with a quadratic function to achieve smoother steering behavior and reduce abrupt corrections when bypassing pillars. In addition, we implemented a rotating ultrasonic sensor system driven by a Medium Motor, allowing the robot to measure distances from multiple directions and improve environmental awareness, especially in situations where a fixed sensor position
+
+---
+
+## Risk identification and mitigation
+
+### Risk: Odometry drift over long distance
+
+Our first identified risk associated with our system is the problem of odometry drift. This involves increasing positioning errors that occur over time when moving at long distances. Consequently, there will be errors in the estimation of the position of the robot, particularly during long trips, where any errors can cause problems with navigation.
+The following corrective measures were used to address this particular risk: a method of correcting position using gyroscopes, validating the distances using the environment via ultrasonic sensors, and an intelligent trust system like the Kalman method.
+
+---
+
+### Risk: Mis-detection of Camera
+
+The major issue was the mis-detection by the camera, wherein the Pixy camera was detecting objects lying outside the perimeter of the competition field. The reason for this was largely attributed to the field of view being too large, leading to inaccurate interpretation of unrelated objects as obstacles.
+In order to overcome this limitation, we limited the angle of view of the camera and calibrated it for each trial.
+
+---
+
+### Risk: blind spot of the ultrasonic detector
+
+The problem that arose was ultrasonic blind spot due to the restriction of one-way distance measurement. This restriction limited the capability of the robot to detect obstacles in all important positions, potentially causing a delayed reaction or wrong movement choice when moving around.
+To solve this problem, we utilized the rotating mechanism for the ultrasonic detector with the help of another Medium Motor.
+
+---
+
+### Risk: unstable sensor fusion
+The main problem identified was instability in sensor fusion, where there was a mismatch between ultrasonic sensor readings and odometry data. This inconsistency could lead to incorrect position estimation, especially when both systems produced conflicting information during dynamic movement or in areas with accumulated odometry drift.
+To mitigate this issue, we implemented a trust-based Kalman-inspired weighting system. This system dynamically adjusts the influence of each sensor based on their agreement level: when both measurements are close, the system increases trust in ultrasonic data, and when the difference becomes large or unstable, it reduces its weight and relies more on odometry. This adaptive balancing improves robustness and overall navigation reliability.
+
+---
+
+## System integration rationale
+
+The robot is conceived as an integrated system such that:
+
+- The Pixy camera is responsible for obstacle detection
+- The ultrasonic sensor performs distance validation as well as navigation
+- The gyroscope balances orientation
+- The encoder performs odometry tracking
+- The software-based FSM controls state change behavior.
+
+All systems are connected to each other.
+---
+
+## Summary of final engineering decisions
+
+We have adopted a multi-sensor fusion design rather than depending on one navigation approach since there is not any sensor which can be trusted completely while competing.
+All of the systems complement the deficiencies of each other; therefore, their performance becomes more consistent and reliable.
+
 # Pictures
 ### Robot photos
 
