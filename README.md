@@ -38,10 +38,15 @@ CONTENT
   * [Wheel selection and odometry accuracy](#wheel-selection-and-odometry-accuracy)
   * [Center of mass and weight distribution](#center-of-mass-and-weight-distribution)
   
-* [**Power and sense management**](#Power-and-sense-management)
-  * [Power management and choiсe of power source](#Power-management-and-choiсe-of-power-source)
-  * [Sense management](#sense-management)
-* [**Obstacle management**](#obstacle-management)
+* [**Power and sensor architecture**](#power-and-sensor-architecture)
+  * [Power architecture and source selection](#power-architecture-and-source-selection)
+  * [Power distribution architecture](#power-distribution-architecture)
+  * [Sensor placement and reasoning](#sensor-placement-and-reasoning)
+  * [Calibration methods](#calibration-methods)
+  * [Failure cases and mitigation](#failure-cases-and-mitigation)
+  * [Iteration and improvements](#iteration-and-improvements)
+* [**Software Architecture and Obstacle Strategy**](#software-architecture-and-obstacle-strategy)
+  * [Finite State Machine (Behavioral Model of the Software)](#finite-state-machine-(behavioral-model-of-the-software))
   * [Parking pasition](#parking-position)
   * [Kalman Filter](#kalman-filter)
   * [Ultrasonic rotation control](#ultrasonic-rotation-control)
@@ -468,7 +473,7 @@ Wiring allows for proper segregation of the mechanisms used for locomotion, stee
 # <hr/>
 
 
-# Obstacle management
+#  Software Architecture and Obstacle Strategy
   For the obstacle detection we used Pixy2 camera and PixyMon v2 application to configure it. To use it in LEGO MINDSTORMS application you need to install special library, because it is third-party device. All of the downloads are able in official site of Pixy2 <a href="https://pixycam.com/downloads-pixy2/">Pixy[7]</a>.We get x y coordinates on the field from the Pixy camera by placing the robot on two points along the correct trajectory of robot (If the pillar is red, it should go around on the right, if it is green, on the left).From the obtained value of pillars and robot(x,y coordinates) we calculate a linear function by two points (you can calculate it by the link:) <a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points[8].</a> This function is approximate scheme or way of how our robot should move in order to bypass pillars. Every straightforward section has its own coordinate center and 6  possible locations of pillars. Robot changes its odometry coordinate when he passes second line(blue or orange, depends on a direction). Corner sections do not include odometry system, because it doesn't have obstacles there.
   </br> </br>
 <table>
