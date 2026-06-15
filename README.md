@@ -265,6 +265,7 @@ Power consumption details for motors and sensors can be found here:
 <a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
 The calculation for power consumption is based on the standard power consumption values of the LEGO EV3 motors and sensors.
 The power consumption capacity of the EV3 Large Motor can be as much as 1.6 A at maximum power while the power consumption of the EV3 Medium Motor can be as much as 0.7 A.
+<br> *Detailed structural routing diagrams and current benchmarks are cataloged within our [Electrical Wiring Diagrams Portfolio](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/schemes/README.md).*
 
 <table>
   <thead>
@@ -387,9 +388,6 @@ This system simplifies the system and makes it more reliable by removing potenti
 
 ### Sensor placement and reasoning 
 
-  
- 
-  
 * **Pixy camera:** <br> The camera called Pixy is fitted in the rear top part of the robot. This particular camera detects obstacles when the robot travels backwards. When the camera had an angle of 60°, it detected objects from outside the field, resulting in navigation problems during the 2025 national competition. The angle was then lowered to 45°.
 </p>
 
@@ -400,8 +398,7 @@ This system simplifies the system and makes it more reliable by removing potenti
   * [ultrasonic sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/ultrasonic_sensor.md)
   
 * **Color sensor:** <br> The color sensor will be mounted in the middle of the robot, underneath, at the bottom. This will enable the color sensor to detect markings on the floor consistently below the robot when in motion. The central mounting of the sensor was done to facilitate odometry and line detection, making it easy to refer to the robot's position when in motion.
-  * [color sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/color_sensor.md) <br>
-    and other sense managements:
+  * [color sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/color_sensor.md) <br><br>  and other sense managements:
   * [encoders from motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/encoders_from_motors.md)
   * [odometry](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/odometry.md)
 
@@ -410,198 +407,62 @@ This system simplifies the system and makes it more reliable by removing potenti
 
 ### Calibration methods
 
-Pixy camera is calibrated using PixyMon software by adjusting color signatures and brightness thresholds before each run.
+Calibration for the Pixy camera is done through PixyMon, the software used on a computer to adjust the camera. The software offers many parameters to be adjusted so that we can set up the camera according to the current environment. In most cases, we test the color signature of objects and confirm if the camera can recognize red and green objects based on the current lighting conditions. Due to different lighting conditions depending on location, we do this calibration many times before every race. *Here you can see how to set up this camera* <br>
+ * [Pixy2 camera's configuration](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Obstacle_management/README.md) <br>
 
-Gyroscope is reset at startup to establish a zero-reference orientation and eliminate accumulated drift.
+The calibration process for the gyroscope is done automatically during the start of every race. Through the EV3-G software, we use a reset block to set the value of the sensor to zero.
 
 ---
 
 ### Failure cases and mitigation
 
-- Gyroscope drift → corrected using encoder fusion and startup reset  
-- Camera misdetection → reduced via field-of-view limitation and calibration  
-- Voltage drop → controlled by operating strictly within defined range  
+**Gyroscope drift** <br>
+Drift in the gyroscope could be experienced in some cases when the device operates, and this would have an impact on the turning accuracy and odometry. To minimize the occurrence of drift, the gyroscope would be reinitialized at the start of each run. Additionally, different gyroscope devices were tested, and the most reliable one was used.
+
+**Camera misdetection** <br>
+Pixy camera is dependent on the calibration settings and lighting. Calibration settings that are not proper will result in the robot detecting some unnecessary objects. In the initial tests that were performed, a large camera angle helped the robot detect objects that were beyond the area of the competition. However, after several tries, the camera angle was lowered from about 60 degrees to 45 degrees.
+
+**Voltage drop**  <br>
+Low battery voltage can affect both motor performance and camera operation. Reduced brightness and unstable sensor behavior may decrease obstacle detection reliability. To avoid this, the robot is operated within a voltage range of 7.6V–8.2V, and batteries are replaced before performance degradation becomes noticeable
 
 ---
 
 ### Iteration and improvements
 
-The system was iteratively improved based on field testing. The camera angle was reduced from ~60° to ~45° after detecting false positives outside competition boundaries.
+Many adjustments have been made along the process of testing and participating in the competitions aimed at improving reliability and avoiding unpredicted behavior.
 
-The ultrasonic system was optimized into a single rotating sensor to reduce hardware complexity while maintaining full directional awareness.
+The first major adjustment concerned the angle of installation of the Pixy camera. The camera was initially installed at an angle of about 60°, giving a very broad vision field. During the 2025 National Competition, the robot used to detect objects located outside of the competition ground and interpret it as an obstacle leading to the robot heading toward the border line.
 
-Multiple Medium Motor configurations were tested, and the most stable setup was selected based on torque consistency and control responsiveness.
+This problem was analyzed and the camera installation angle decreased by 15° and was slightly adjusted. This way, only the visible area of the competition ground remained and the detection became more accurate.
+
+The gyroscope was also adjusted during the design phase. Several types of sensors were tested and the one demonstrating least drift was chosen for the design in order to avoid any unpredictable changes in position.
+
+Moreover, several actions have been undertaken to enhance the repeatability of results. The camera calibration is performed before each test and the gyroscope is reset at start-up.
 
 ---
 
 ### Wiring diagram
 
-<p><b>[INSERT WIRING DIAGRAM HERE]</b></p>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Wiring%20Diagram.png> <br>
+A wiring layout for the robot is based entirely on the EV3 Intelligent Brick and its ports, in which all sensors and actuators are plugged directly into the brick's inputs and outputs.
 
----
+Motor ports include the following connections:
+- The rear wheel driving system uses Ports A and B. Medium Motors in this port are connected to the same shaft, thus ensuring the synchronization of rear wheels' rotations.
+- Port C includes a Medium Motor that controls the rotation of the front steering wheel.
+- Port D controls the rotation of an ultrasonic sensor, which allows for directional detection within the environment.
 
+Sensor ports include the following devices:
+- Port 1 includes the Pixy camera to detect objects behind the robot.
+- Port 2 contains the gyroscope sensor for detecting rotational changes in the robot.
+- Port 3 contains the ultrasonic sensor for distance detection in several directions.
+- Port 4 contains the color sensor for line detection and odometry.
 
-
-
-<div align="center">
-  <img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="45%" alt="EV3 Power Terminal Mapping">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="25%" alt="Official EV3 DC Rechargeable Battery Pack">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="25%" alt="Battery Integration Enclosure">
-</div>
-
-
-
-*Detailed structural routing diagrams and current benchmarks are cataloged within our [Electrical Wiring Diagrams Portfolio](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/schemes/README.md).*
-
-### Controller platform and software environment selection
-The control center block is the LEGO EV3 Intelligent Brick. Even though many expert teams tend to evolve into other text-oriented programming languages, the main navigation control program is entirely coded through **the LEGO MINDSTORMS EV3-G Graphical Programming Language**.
-
-Some of the key benefits associated with using EV3-G for software development include:
-
-* **Fast Strategy Adjustments:** Given that all commands are organized in a drag-and-drop manner, the coding process becomes quick and allows us to make necessary adjustments within a few seconds. This can be extremely useful during competitions when it is important to change some software parameters in accordance with newly discovered field conditions or rules.
-* **Efficiency of Firmware Code Execution:** All EV3-G functions communicate directly with the LEGO firmware drivers, which reduces all possible delays or missteps caused by cross-compilation and micro-Python syntax errors.
-* **Efficient Sensor Handling:** Sensor-related operations involve hardware interrupts that facilitate quick calibration.
-* 
-# Power and sense management 
-
-</br>
-
-### Power management and choiсe of power source
-
-The core of our robot is the <a href="https://pybricks.com/ev3-micropython/startbrick.html">EV3 Programmable Brick[5]</a> 
-Its power comes from a **rechargeable 10V Lithium Battery**.  
-We decided to use a rechargeable battery instead of 6 AA batteries.  
-
-Despite AA batteries having a higher capacity, they can still be inconvenient and risky to use while rechargeable batteries can be charged in parallel so, one is in use while another is charging. Single use batteries have to be constantly replaced, which can cause big problems during the olympiad.  
-
-Even rechargeable AA batteries (such as GP types) require additional adapters for charging, and usually only 2–3 cells can be charged at a time, whereas the robot requires all 6.  
+Wiring allows for proper segregation of the mechanisms used for locomotion, steering, perception, and navigation of the robot.
 
 
-
-<table>
-<tr>
-<td align="center">
-<img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="500">
-</td>
-</tr>
-<tr>
-<td align="center">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/batteries.jpg" width="300">
-  <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/battery%20slot.png" width="300">
-  
-</td>
-</tr>
-</table>
-
-
-  * [Electroschemes/wiring diagrams](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/schemes/README.md)
-
-    ## Why did we choose EV3 P-Brick?
-    <ul>
-    <li font size="10">EASY TO USE</li> <br>
-    The EV3 comes with graphical programming environment (LEGO Mindstorms EV3 software), and it makes it much easier. This visual approach is more accessible than writing code in languages like C++ (Arduino) or Python (Raspberry Pi).Moreover, EV3 can be programmed very quickly thanks to its drag and drop graphical environment. This allows teams to make fast adjustments like surprises or fix errors during competitions, saving valuable time.<br> <br><br>
-    <li>INTEGRATED HARDWARE</li> <br>
-    EV3 comes with specialized LEGO motors and sensors (like color, infrared, and gyro), which are easy to connect and calibrate. Third-party developers can integrate their own devices thanks to the EV3 Firmware Developer Kit(With this Firmware Developer Kit you get the information you need if you want to understand the firmware architecture of the LEGO MINDSTORMS EV3 Programmable brick).For example we use "Pixy camera Lego Mindstorms EV3" edition with no need to download or edit firmware by ourselves.<br> <br><br>
-    <li>PORTABILITY</li>
-    <br>
-    EV3 is more portable and compact,because it is designed for easy handling, and its components are built with the purpose of being assembled and taken apart for quick project changes.LEGO MINDSTORMS EV3 Brick weighs approximately 215 grams. We can put all our kit in one box. <br> <br><br>
-    <li>ROBOT DESIGNING</li>
-    <br>
-Our robot was almost built only by LEGO details except camera and we can change its construction very quick, while Arduino or Raspberry Pi may face problem, that they can't change design because it was made by 3D-printer and etc  <br> <br><br>
- 
-  ### EV3 P-Brick Energy distribution
-  EV3 P-Brick have 4 ports for sensors and motors and all of them distributes and contributes most of the energy resources. While LEGO sensors contribute as much energy as they need by built-in control systems and framework abilities, varying between number of iteration per second, energy consumption and framework and IDE's abilities to proceed amount of data. Then the motors energy distribution is often regulated by control algorythms and values given in the programm, consequentlyleading to smart energy distribution to provide enough power and maintain accuratte readings without overloading.
-  
-  ### Monitoring features and flexibilty
-  The LEGO EV3 power management system improves flexibility and efficiency through its convenient monitoring features and adaptable power options. The system supports multiple configurations, such as rechargeable lithium-ion batteries or standard AA batteries, providing a choice between them, also it is easier to change between batteries in LEGO because of real-time battery monitoring system that enables active energy management, providing alerts for low power and ensuring uninterrupted operation. This flexibility is further enhanced by integration with external power sources for extended runtime, while the monitoring features ensure optimal performance and safe components during tasks.
-  
-  ### Comparison with other popular controllers
-  
-  <table>
-    <tr>
-      <th width=33%>
-        
-  ![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick.png)
-  
-  EV3 P-Brick </th>
-      <th width=33%>
-        
-  ![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/Arduino_UNO.jpeg)
-        
-  Arduino UNO 
-      </th>
-      <th width=33%> 
-      
-  ![alt text](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/Raspberry_Pi_4B.png)
-       
-  Raspberry Pi </th>
-    </tr> 
-    <tr>
-    <td colspan=3 align=center> processor </td>
-    </tr>
-    <tr>
-      <td align=center> 300 MHz, 1 core </td>
-      <td align=center> 16MHz </td>
-      <td align=center> 1.5 GHz, 4 cores </td>
-    </tr>
-     <tr>
-    <td colspan=3 align=center> ports </td>
-    </tr>
-    <tr>
-      <td align=center> 4 ports for sensors, 4 ports for motors </td>
-      <td align=center> 14 digital, 6 analog pins </td>
-      <td align=center> 40 GPIO pins </td>
-    </tr>
-    <tr>
-    <td colspan=3 align=center> programming </td>
-    </tr>
-    <tr>
-      <td align=center> LEGO Mindstorms, limited Python and C++ </td>
-      <td align=center> Arduino IDE (C, C++ based) </td>
-      <td align=center> Multiple languages (Python, C++, Java, etc.) </td>
-    </tr>
-  </table>
-  </br>
-  </br>
-  
-## Sense management 
-
-</br>
- UART sensors of LEGO EDUCATION MINDSTORMS EV3 Core Set such as color, ultrasonic and gyro sensors are used for sense management of our robot. Gyro sensor saves initial robot position in degrees and counts the displacement from it and it allows us to find drifts in turns or long movements and compensate them in real time. Ultrasonic sensor measures the distance from the robot to a wall and robot can recognize his direction in the start, because of differences of measurements and it is also used for obstacle detection, if the distance changes surprisingly compared to the predicted one. Lines, crossing and markers can be detected by a single color sensor. Encoders in medium motors know the distance robot moved with high accuracy, cause they count rotation of each motor in degrees, which can be converted by circular formulas into wheel rotations and finally into the distance what robot travelled. Our program uses a combination of these sencors to create the odometry of our robot. By using encoders, gyro sensor and pythagoras theorem we find the displacement that robot moves from starting position and convert it into x and y coordinates. In the beginnig of the round while standing in the parking zone robot can understand his direction, because ultrasonic is always pointed to the right, so if the direction is clockwise-ultrasonics measurements wil show a big value and opposite. The center of the every straightforward section is the center of odometry where x and y coordinates are zero. Odometry is constantly corrected to avoid drift errors that appear because of wheel slip, inaccurate sensor values or mechanical imperfections. Ultrasonic sensor and gyro sensor are used to fix odometry also by pythagoras theorem and exceptions for the situations when ultrasonic sensor view blocks or gives suspicious results. This combination of sensors makes a stable navigation system where errors from one sensor can be compensated by comparision with others. For example, when encoders accumulate a small error in long straight lines and it becomes bigger and bigger, gyro sensor starts correcting the direction; when gyro slightly drifts, encoders and ultrasonic give stable feedback;when odometry shifts, color sensor is used as reference for field parts. The detailed info is given by links related to each sensor's purpose.
-  
-  * [color sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/color_sensor.md)
-  * [ultrasonic sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/ultrasonic_sensor.md)
-  * [gyro sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/gyro_sensor.md)
-  * [encoders from motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/encoders_from_motors.md)
-  * [odometry](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/odometry.md)
 # <hr/>
-<!-- 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--->
 # Obstacle management
   For the obstacle detection we used Pixy2 camera and PixyMon v2 application to configure it. To use it in LEGO MINDSTORMS application you need to install special library, because it is third-party device. All of the downloads are able in official site of Pixy2 <a href="https://pixycam.com/downloads-pixy2/">Pixy[7]</a>.We get x y coordinates on the field from the Pixy camera by placing the robot on two points along the correct trajectory of robot (If the pillar is red, it should go around on the right, if it is green, on the left).From the obtained value of pillars and robot(x,y coordinates) we calculate a linear function by two points (you can calculate it by the link:) <a href="https://planetcalc.com/8110/?language_select=en&ysclid=m0a3s77i4p794636345">linear function by two points[8].</a> This function is approximate scheme or way of how our robot should move in order to bypass pillars. Every straightforward section has its own coordinate center and 6  possible locations of pillars. Robot changes its odometry coordinate when he passes second line(blue or orange, depends on a direction). Corner sections do not include odometry system, because it doesn't have obstacles there.
   </br> </br>
@@ -685,23 +546,26 @@ This block outputs: </br>
 </th>
 </tr>
 </table>
+## Finite State Machine (Behavioral Model of the Software)
+
+Robot's behavior depends on state which is determined by the input from sensors and field location.
 
 ## Automatic control
 The robot's trajectory is determined by two main situations: <br>
 <ul>
   <li>
-    when pixy camera sees a road sign
+    when pixy camera sees a road sign 
   </li>
   <li>
     when pixy camera does not see road sign
   </li>
 </ul> <br>
 
-### Bypassing obstacles (when pixy camera sees a road sign)
+### Bypassing obstacles (when pixy camera sees a road sign (State 1)) 
 We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a linear function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
 
 https://github.com/user-attachments/assets/eb8f1eea-5bec-42ee-9bcd-57115f89046b
-### Align center (when pixy camera does not see road sign)
+### Align center (when pixy camera does not see road sign (State 2))
 Our robot aligns itself with the center of the road when it doesn't see an object, so as not to crash into parking spaces or miss a road sign. To center the robot, it uses odometry. The module x coordinate of the center of the road is equal to 25 (x is 25 or -25) because the robot uses segmented odometry (the center coordinate (0;0) is the center of the every straightforward section) <br>
 <table>
 <tr>
@@ -717,7 +581,7 @@ Segmented odometry
 </div>
 It determines the error between the coordinate of the robot and the center of the road and is given to the steering mechanism so that it aligns itself to the center thanks to the constant formula.
 
-## Parking position
+## Parking position (State 3)
 
 We use ultrasonic sensor for precise parking and we already know where parking zone is, because it is located in the section where we started, but since we only have one ultrasonic and in the clockwise run ultrasonic will be pointed to the inner wall, we will have to make turn. Robot will drive till it sees orange line and will turn and align near to the outer walls, so the parking process consists of 3 steps:
 <ul>
@@ -731,10 +595,10 @@ We use ultrasonic sensor for precise parking and we already know where parking z
 ### Make a turn 
 our robot makes a turn if the robot moves clockwise so that the ultrasonic looks at the outer border
 
-### Search for a parking zone
+### Search for a parking zone 
 Our robot should move parallel and close to the outer side until it sees the parking zone. To be close to parking is we also use pixy2 relative coordinates and odometry to know the parking zone's position. Counter clockwise run includes backward movement and it stops and moves forward at orange line. Pixy allows robot to not go too far from parking section. Clockwise run includes forward movement and 180 degrees turn when it sees orange.
 
-### park in the zone
+### park in the zone 
 To park accurately, an ultrasonic sensor is used, when this sensor notices a parking wall, the robot stops and uses cycle of turning steering wheel right,left and moving back, forward on a short distance. 
 <br>
 <br>
@@ -755,10 +619,32 @@ In this graph you can see how error of odometry slowly rises by one minute compa
   <p>
     How we use Kalman Filter? It compares 2 values from odometry and ultrasonic. In case difference is negligible, special coefficient <b>Trust</b> will rise. Normally it is close to 1, so robot will move and trust to Ultrasonics values, but if difference between values are too big or it changes too fast, trust will sharply decline. For example, Ultrasonic can detect the obstacle and its value will decrease, so with trusts downfall, robot will rely on Odometry system.
   </p>
+
+  ### Previous system (Odometry correction method)
+
+Before adopting Kalman Filter, we adopted direct correction between the values obtained from ultrasonic sensor readings and odometry values. In this case, we matched the odometry values and ultrasonic values and if their difference is less than 10, we directly applied the ultrasonic reading to correct odometry. But, in practice, this method did not work well under competition situations. Whenever the difference between ultrasonic readings and odometry readings exceeded 10, this system would yield huge errors due to accumulating odometry drift.
+
+### Problem analysis
+The first problem of the above approach is the absence of smooth changes in the level of trust.
+In fact, there were only two possibilities:
+* The values were similar: the direct replacement took place
+* The values were different: the system became instable
+
+Thus, the position of the robot was jumping, causing instable odometry.
+
+### Moving towards Kalman-based system
+To improve this situation, we have introduced the filter approach based on Kalman and a new dynamic parameter – Trust.
+Instead of switching between the readings of the sensors, we now define the weight of each of them for the final value.
+- The more similar values from ultrasonic and odometry were, the higher the level of Trust.
   
-## Ultrasonic rotation control
-  In most of cases, 3 motors are enough for FE category, but we decided to use last one too in order to improve flexibility of our robot to a hard conditions, that is why last motor rotates Ultrasonic sensor by 180 
-  degrees horizontally, increasing view range. How it works? When robot drives toward red pillar, he has to bypass it from right, but if driving direction is clock wise, ultrasonic will be pointed to the left, which means it will detect pillar and potentially it can be dangerous. That is why whenever Ultrasonic can detect pillar, our 4th motor will turn it to the opposite side, inner wall until he bypasses pilar. This system has similarities with LIDAR system.
+  
+## Ultrasonic Rotation Control
+
+Generally, 3 motors are sufficient for FE category robots, but we wanted to make our robot more flexible and reliable, especially in hard situations, which is why our last motor rotates the Ultrasonic sensor by 180 degrees horizontally. How does it work? If the robot moves to the pillar, which has red color, then it has to bypass it from the right side, but when moving clock wise, the Ultrasonic sensor will be pointed at the left, which is dangerous, because it may detect a pillar. As soon as Ultrasonic detects pillar, 4th motor rotates sensor till the moment it faces inner wall (bypassing pillar), like in LIDAR system.
+
+In the previous version of our robot, we faced the problem when there was an increase in odometry error while moving and robot started to confuse objects and walls. Thus, robot could have difficulties in understanding his surrounding area.
+
+Therefore, in order to decrease the chance of mistake, we decided to use rotating ultrasonic sensors which measure distances from clear side.
   <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelsonic.jpeg" width="600"> 
  <table>
   <tr>
