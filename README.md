@@ -199,8 +199,9 @@ There was several revisions done on the drivetrain in order to compensate the tr
 The drivetrain configuration went through numerous R&D iterations to address the compromise between peak linear speed and low speed accuracy.
 
 The current Version 4 configuration employs a specially designed two-stage compound gear train in order to enhance the Medium Motor's optimal power output range:
-* **First Stage (Speed Enhancer):** There is a direct transmission from the 24-teeth driver gear to the 8-teeth follower gear. The $1:3$ step up provides maximum rotational speed.
-* **Second Stage (Torque Compensator):** The motion is conveyed by $1:1$ link to the 20-teeth gear, driving the 28-teeth gear that feeds the mechanical differential. In this way, the $20:28$ ($5:7$) step down mitigates the maximum velocity, allowing recovering mechanical torque.
+* **First Stage (Speed Enhancer):** <br> There is a direct transmission from the 24-teeth driver gear to the 8-teeth follower gear. The $1:3$ step up provides maximum rotational speed.
+* **Second Stage (Torque Compensator):** <br> The motion is conveyed by $1:1$ link to the 20-teeth gear, driving the 28-teeth gear that feeds the mechanical differential. In this way, the $20:28$ ($5:7$) step down mitigates the maximum velocity, allowing recovering mechanical torque. <br>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/gear%20ratio.png width=15%> <br>
 
 As a result of such optimization, torque consumption is balanced with physical acceleration. The average stable velocity in this case is **0.25 m/s** (1 meter per 4 seconds) in competition condition with payload. Such modification fully excludes any stress on the motor preventing heat generation.
 
@@ -221,21 +222,24 @@ To facilitate immediate direction switching, it was decided to adopt the Paralle
 <p> The LEGO system, by nature, has mechanical tolerance and clearance issues . At low operating speed, the mechanical tolerance issue could be comparable to that of the steering commands itself (i.e., commanding 5 degrees but achieving 0 degree turn). </p>
 
 This issue was solved entirely through structural component selection rather than software calibration:
-* **Option A (High-Friction Black Connectors):** Provides rigid, zero-backlash mating but increases structural resistance, making the steering servo work harder.
-* **Option B (Low-Friction Grey Pins):** Allows effortless steering rotation but introduces severe mechanical play (backlash).
+* **Option A (High-Friction Black Connectors):** <br> <img scr=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/High-Friction%20Black%20Connectors.png width=10%> <br>
+Provides rigid, zero-backlash mating but increases structural resistance, making the steering servo work harder.
+* **Option B (Low-Friction Grey Pins):** <br> <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Low-Friction%20Grey%20Pins.png width=10%> <br> Allows effortless steering rotation but introduces severe mechanical play (backlash).
 
-**Engineering Decision:** *Option A was selected.* By eliminating mechanical play structurally, steering predictability was restored. 
+**Engineering Decision:**  <br>*Option A was selected.* By eliminating mechanical play structurally, steering predictability was restored. 
 
 
 ### Wheel selection and odometry accuracy
 
 <p> Wheel choice is directly linked to odometry accuracy because any slip from the wheels will result in inaccuracies from the wheel encoders that determine the location. </p> 
 
-* **Drive Rear Axle:** The robot is designed using LEGO SPIKE Prime wheels with a diameter of 5.6 cm. In previous designs, LEGO EV3 tires were used; they exhibited high coefficients of slippage when accelerating suddenly due to their design. LEGO SPIKE Prime tires are made of a unique rubber material, which provides better traction on the surface.
-  * **Trade-off:** Switching to 5.6 cm tires resulted in a somewhat lower theoretical maximum speed because of the wheel size, but the trade-off was made for better accuracy in tracking.
-  * **Experimental Evidence:** The use of SPIKE Prime tires, compared to EV3 tires, lowered the overall drift in distance traveled from 10–15 cm to 3–5 cm over three laps.
+* **Drive Rear Axle:** <br> The robot is designed using LEGO SPIKE Prime wheels with a diameter of 5.6 cm. In previous designs, LEGO EV3 tires were used; they exhibited high coefficients of slippage when accelerating suddenly due to their design. LEGO SPIKE Prime tires are made of a unique rubber material, which provides better traction on the surface.
+  * **Trade-off:** <br> Switching to 5.6 cm tires resulted in a somewhat lower theoretical maximum speed because of the wheel size, but the trade-off was made for better accuracy in tracking. <br>
+  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/LEGO%20SPIKE%20Prime%20wheels.jpg width=15%>
+  * **Experimental Evidence:** <br> The use of SPIKE Prime tires, compared to EV3 tires, lowered the overall drift in distance traveled from 10–15 cm to 3–5 cm over three laps.
  
-* **Front Steering Axle:** Small wheels with a diameter of 2.4 cm were chosen to mount on the robot. Due to the size of the wheels and their limited angle of steering, there is no chance of contact between the tires and the sides of the chassis or the Intelligent EV3 Brick.
+* **Front Steering Axle:**  <br> Small wheels with a diameter of 2.4 cm were chosen to mount on the robot. Due to the size of the wheels and their limited angle of steering, there is no chance of contact between the tires and the sides of the chassis or the Intelligent EV3 Brick.<br>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Front%20Steering%20%20wheels.png width=10%> <br>
 
   The explanation of our construction design is on our youtube channel <a href="https://www.youtube.com/channel/UC0_5yZ2aPdJc0X5wtIw4ZcA">"QZO Flame"[4] (tag: @QZOFlame)</a>.
    
@@ -546,11 +550,10 @@ This block outputs: </br>
 </th>
 </tr>
 </table>
+
 ## Finite State Machine (Behavioral Model of the Software)
 
 Robot's behavior depends on state which is determined by the input from sensors and field location.
-
-## Automatic control
 The robot's trajectory is determined by two main situations: <br>
 <ul>
   <li>
@@ -563,6 +566,7 @@ The robot's trajectory is determined by two main situations: <br>
 
 ### Bypassing obstacles (when pixy camera sees a road sign (State 1)) 
 We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a linear function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/linear%20function.png> <br>
 
 https://github.com/user-attachments/assets/eb8f1eea-5bec-42ee-9bcd-57115f89046b
 ### Align center (when pixy camera does not see road sign (State 2))
@@ -636,6 +640,11 @@ Thus, the position of the robot was jumping, causing instable odometry.
 To improve this situation, we have introduced the filter approach based on Kalman and a new dynamic parameter – Trust.
 Instead of switching between the readings of the sensors, we now define the weight of each of them for the final value.
 - The more similar values from ultrasonic and odometry were, the higher the level of Trust.
+
+## Improving the obstacle avoidance function (Linear to Quadratic)
+
+During the initial development of the obstacle avoidance program, a linear function was applied to model the avoidance process in relation to the pillars. In some cases, this led to an occurrence of sharper steering maneuvers and thus, increased the chance of hitting a pillar.
+The latest implementation of the avoidance function involves the use of a quadratic equation. The use of this function has made it possible to achieve smoother steering maneuvers and avoid pillars much more effectively than before.
   
   
 ## Ultrasonic Rotation Control
@@ -644,7 +653,7 @@ Generally, 3 motors are sufficient for FE category robots, but we wanted to make
 
 In the previous version of our robot, we faced the problem when there was an increase in odometry error while moving and robot started to confuse objects and walls. Thus, robot could have difficulties in understanding his surrounding area.
 
-Therefore, in order to decrease the chance of mistake, we decided to use rotating ultrasonic sensors which measure distances from clear side.
+Therefore, in order to decrease the chance of mistake, we decided to use rotating ultrasonic sensors which measure distances from clear side. <br>
   <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Vehicle_photos/FEmodelsonic.jpeg" width="600"> 
  <table>
   <tr>
