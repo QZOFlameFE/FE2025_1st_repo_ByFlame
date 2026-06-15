@@ -931,7 +931,7 @@ The README file contains all the information about the project structure and is 
 # Performance videos
 ### Open Challenge: https://www.youtube.com/watch?v=7BwItxD5PFI&ab_channel=QZOFlame </br>
 ### Obstacle Challenge: https://www.youtube.com/watch?v=Dp4Yk0vj5d8&ab_channel=QZOFlame </br>
-### Robot parts discussion:https://youtu.be/g_3ys_mIVyQ?si=v_OcqGlr-rYw7DHp](https://youtu.be/EO1Ps9sOk3s</br>
+### Robot parts discussion: https://youtu.be/EO1Ps9sOk3s</br>
 # <hr/>
 
 
