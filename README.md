@@ -144,8 +144,8 @@ In terms of technical performance parameters, the fundamental properties of thes
 #### Engineering analysis & final Selection
 <p> Although the Large Motor offers better torque performance (0.20 Nm compared to 0.08 Nm), it is worth noting that the Medium Motor was used in building the whole robot because of two critical reasons identified from our study:</p>
 <ul>
-   <li> <b> Efficiency of Space and Collision Prevention:</b> The large motor has a large casing, adding to the robot’s size. Due to the restrictions that prohibit collision with traffic pillars, which are painted red and green in the WRO 2026 contest, making the robot as small as possible was essential. The small size of the medium motor ensured that the robot would have a small footprint.</li>
-   <li> <b>Speed Performance:</b> The medium motor ensures 47% higher top speed operation than the large one (250 rpm vs. 170 rpm). It is crucial for winning time in the easy zones of the race track.</li>
+   <li> <b> Efficiency of Space and Collision Prevention:</b> <br> The large motor has a large casing, adding to the robot’s size. Due to the restrictions that prohibit collision with traffic pillars, which are painted red and green in the WRO 2026 contest, making the robot as small as possible was essential. The small size of the medium motor ensured that the robot would have a small footprint.</li>
+   <li> <b>Speed Performance:</b> <br> The medium motor ensures 47% higher top speed operation than the large one (250 rpm vs. 170 rpm). It is crucial for winning time in the easy zones of the race track.</li>
 </ul>
 
 #### Mitigating the torque deficit via dual-motor coupling
@@ -208,8 +208,8 @@ As a result of such optimization, torque consumption is balanced with physical a
 ### Steering geometry and mechanical backlash mitigation
 
 #### Comparison between parallel steering system and Ackermann system 
-The base of our chassis design comes from parallel steering model geometry. Wheels that are connected to the steering control always turn on the same angle. However, last year we used Pro-Akkerman steering model geometry. The difference is in the angle of the wheels. Pro-Akkerman makes inner wheel turn more than outer wheel, because distances that inner and outer wheels go are dissimilar(while turning).
-<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/akkermanangles.jpg" alt="Ackermann Design">
+The base of our chassis design comes from parallel steering model geometry. Wheels that are connected to the steering control always turn on the same angle. However, last year we used Pro-Akkerman steering model geometry. The difference is in the angle of the wheels. Pro-Akkerman makes inner wheel turn more than outer wheel, because distances that inner and outer wheels go are dissimilar(while turning). <br>
+<img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/akkermanangles.jpg" alt="Ackermann Design"> <br>
 
 <img src="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/concepts/turndistance.jpg" width="500" height="350" alt="Ackermann Design">
 
@@ -222,7 +222,8 @@ To facilitate immediate direction switching, it was decided to adopt the Paralle
 <p> The LEGO system, by nature, has mechanical tolerance and clearance issues . At low operating speed, the mechanical tolerance issue could be comparable to that of the steering commands itself (i.e., commanding 5 degrees but achieving 0 degree turn). </p>
 
 This issue was solved entirely through structural component selection rather than software calibration:
-* **Option A (High-Friction Black Connectors):** <br> <img scr=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/High-Friction%20Black%20Connectors.png width=10%> <br>
+* **Option A (High-Friction Black Connectors):** <br>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/High-Friction%20Black%20Connectors.png width=10%> <br>
 Provides rigid, zero-backlash mating but increases structural resistance, making the steering servo work harder.
 * **Option B (Low-Friction Grey Pins):** <br> <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/Low-Friction%20Grey%20Pins.png width=10%> <br> Allows effortless steering rotation but introduces severe mechanical play (backlash).
 
@@ -235,7 +236,7 @@ Provides rigid, zero-backlash mating but increases structural resistance, making
 
 * **Drive Rear Axle:** <br> The robot is designed using LEGO SPIKE Prime wheels with a diameter of 5.6 cm. In previous designs, LEGO EV3 tires were used; they exhibited high coefficients of slippage when accelerating suddenly due to their design. LEGO SPIKE Prime tires are made of a unique rubber material, which provides better traction on the surface.
   * **Trade-off:** <br> Switching to 5.6 cm tires resulted in a somewhat lower theoretical maximum speed because of the wheel size, but the trade-off was made for better accuracy in tracking. <br>
-  <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/LEGO%20SPIKE%20Prime%20wheels.jpg width=15%>
+<img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/LEGO%20SPIKE%20Prime%20wheels.jpg width=15%> <br>
   * **Experimental Evidence:** <br> The use of SPIKE Prime tires, compared to EV3 tires, lowered the overall drift in distance traveled from 10–15 cm to 3–5 cm over three laps.
  
 * **Front Steering Axle:**  <br> Small wheels with a diameter of 2.4 cm were chosen to mount on the robot. Due to the size of the wheels and their limited angle of steering, there is no chance of contact between the tires and the sides of the chassis or the Intelligent EV3 Brick.<br>
