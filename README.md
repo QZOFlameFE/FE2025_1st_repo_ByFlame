@@ -263,7 +263,80 @@ Empirically measuring during track tests, it was discovered that the most optima
 The EV3 P-Brick has **4 ports for motors** and **4 ports for sensors**.  
 Power consumption details for motors and sensors can be found here:  
 <a href="https://www.dexterindustries.com/ev3-current-consumption-measurement/">EV3 Current Consumption Measurement[6]</a>
+The calculation for power consumption is based on the standard power consumption values of the LEGO EV3 motors and sensors.
+The power consumption capacity of the EV3 Large Motor can be as much as 1.6 A at maximum power while the power consumption of the EV3 Medium Motor can be as much as 0.7 A.
 
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Quantity</th>
+      <th>Current (official / estimated)</th>
+      <th>System Role</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><b>EV3 Medium Motor (rear drive)</b></td>
+      <td>1</td>
+      <td>Up to 0.7A</td>
+      <td>Locomotion</td>
+    </tr>
+    <tr>
+      <td><b>EV3 Medium Motor (reart drive)</b></td>
+      <td>1</td>
+      <td>Up to 0.7A</td>
+      <td>Locomotion</td>
+    </tr>
+    <tr>
+      <td><b>EV3 Medium Motor (steering control)</b></td>
+      <td>1</td>
+      <td>Up to 0.7A</td>
+      <td>Directional steering system</td>
+    </tr>
+    <tr>
+      <td><b>EV3 Medium Motor (ultrasonic rotation)</b></td>
+      <td>1</td>
+      <td>Up to 0.7A</td>
+      <td>Environmental scanning mechanism</td>
+    </tr>
+    <tr>
+      <td><b>EV3 Intelligent Brick</b></td>
+      <td>1</td>
+      <td>~0.1–0.2A</td>
+      <td>Central processing unit</td>
+    </tr>
+    <tr>
+      <td><b>Gyroscope sensor</b></td>
+      <td>1</td>
+      <td>~0.02A</td>
+      <td>Orientation tracking</td>
+    </tr>
+    <tr>
+      <td><b>Ultrasonic sensor</b></td>
+      <td>1</td>
+      <td>~0.02A</td>
+      <td>Distance measurement</td>
+    </tr>
+    <tr>
+      <td><b>Color sensor</b></td>
+      <td>1</td>
+      <td>~0.02A</td>
+      <td>Line detection and odometry reference</td>
+    </tr>
+    <tr>
+      <td><b>Pixy camera module</b></td>
+      <td>1</td>
+      <td>~0.14–0.17A</td>
+      <td>Object detection system</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+<b>Total estimated peak current:</b> approximately 3.2 – 3.8A depending on load distribution.
+</p>
+<br>
 Considering the potential decrease in battery voltage that may affect the repeatability of control signals of the steering controller and velocity curves, it was decided that it must be adhered to:
 
 <table>
@@ -292,6 +365,83 @@ Considering the potential decrease in battery voltage that may affect the repeat
     </tr>
   </tbody>
 </table>
+
+
+
+
+---
+
+### Power distribution architecture
+
+The power distribution is done purely using the EV3 Intelligent Brick. There is no external regulation of power as all motors and sensors are directly interfaced using EV3 standard interfaces.
+
+System Architecture
+ * Power to motors is controlled using PWM signal internally
+ * Sensor data is polled using internal EV3 firmware loops
+ * No external power modules
+
+This system simplifies the system and makes it more reliable by removing potential sources of error.
+
+---
+
+
+### Sensor placement and reasoning 
+
+  
+ 
+  
+* **Pixy camera:** <br> The camera called Pixy is fitted in the rear top part of the robot. This particular camera detects obstacles when the robot travels backwards. When the camera had an angle of 60°, it detected objects from outside the field, resulting in navigation problems during the 2025 national competition. The angle was then lowered to 45°.
+</p>
+
+* **Gyroscope:** <br> The gyroscope is located in an easy-to-reach position on the chassis to ensure that any repairs are easily carried out and the connection between the sensor can be rapidly made before the start of the trial. This is because this position has been selected based on its ease of use, mainly with regards to disconnection and reconnection of the sensor to ensure calibration. The position does not impact the accuracy of measurements.
+   * [gyro sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/gyro_sensor.md)
+
+* **Ultrasonic sensor:** <br> The ultrasonic sensor is mounted at the front of the robot and connected to a medium motor for rotation. This allows a single sensor to cover multiple directions (left, front, right) without increasing hardware complexity. The placement was chosen for practical reasons, mainly to keep the mechanical design simple and reduce the number of sensors needed. Using one rotating sensor also simplifies wiring and reduces calibration effort compared to using multiple fixed sensors.
+  * [ultrasonic sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/ultrasonic_sensor.md)
+  
+* **Color sensor:** <br> The color sensor will be mounted in the middle of the robot, underneath, at the bottom. This will enable the color sensor to detect markings on the floor consistently below the robot when in motion. The central mounting of the sensor was done to facilitate odometry and line detection, making it easy to refer to the robot's position when in motion.
+  * [color sensor](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/color_sensor.md) <br>
+    and other sense managements:
+  * [encoders from motors](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/encoders_from_motors.md)
+  * [odometry](https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/odometry.md)
+
+
+---
+
+### Calibration methods
+
+Pixy camera is calibrated using PixyMon software by adjusting color signatures and brightness thresholds before each run.
+
+Gyroscope is reset at startup to establish a zero-reference orientation and eliminate accumulated drift.
+
+---
+
+### Failure cases and mitigation
+
+- Gyroscope drift → corrected using encoder fusion and startup reset  
+- Camera misdetection → reduced via field-of-view limitation and calibration  
+- Voltage drop → controlled by operating strictly within defined range  
+
+---
+
+### Iteration and improvements
+
+The system was iteratively improved based on field testing. The camera angle was reduced from ~60° to ~45° after detecting false positives outside competition boundaries.
+
+The ultrasonic system was optimized into a single rotating sensor to reduce hardware complexity while maintaining full directional awareness.
+
+Multiple Medium Motor configurations were tested, and the most stable setup was selected based on torque consistency and control responsiveness.
+
+---
+
+### Wiring diagram
+
+<p><b>[INSERT WIRING DIAGRAM HERE]</b></p>
+
+---
+
+
+
 
 <div align="center">
   <img src="https://github.com/QZOFlameFE/FE2024_1st_repo_ByFlame/blob/main/Instructions/Power_and_Sense_Management/EV3_P-Brick_demonstration.jpg" width="45%" alt="EV3 Power Terminal Mapping">
