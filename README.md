@@ -578,7 +578,7 @@ The robot's trajectory is determined by two main situations: <br>
 ### Bypassing obstacles (when pixy camera sees a road sign (State 1)) 
 We use steering mechanism and pixy2 coordinates and connect them with linear function. Y value from pixy2 gives how far the robot should be from the object, using a linear function. Using the obtained value and the real value X from pixy2, we can find an error between robot and pillar and give this error to the steering mechanism. So if the pillar is close to robot linear function gives high values to steering mechanism's motor in order to avoid crush. <br>
 <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/linear%20function.png> <br>
-However, now we use a quadratic function for obstacle avoidance instead of a linear one. Unlike the linear function, which requires only two points, the quadratic function needs at least three points to define the trajectory. This allows the robot to generate a smoother path when avoiding obstacles, improving motion stability and reducing the risk of hitting pillars. <br>
+However, now we use a quadratic function for obstacle avoidance instead of a linear one. Unlike the linear function, which requires only two points, the quadratic function needs at least three points to define the trajectory. This allows the robot to generate a smoother path when avoiding obstacles, improving motion stability and reducing the risk of hitting pillars. In the tests that were done, the linear function was found to make the robot either scratch or move off the desired path in about 1 out of 6. However, after adopting the quadratic function, this reduced to 1 out of 15 test attempts. <br>
 <img src=https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/schemes/quadratic%20function.png> <br>
 
 https://github.com/user-attachments/assets/eb8f1eea-5bec-42ee-9bcd-57115f89046b
@@ -806,7 +806,7 @@ All systems are connected to each other.
 ## Summary of final engineering decisions
 
 We have adopted a multi-sensor fusion design rather than depending on one navigation approach since there is not any sensor which can be trusted completely while competing.
-All of the systems complement the deficiencies of each other; therefore, their performance becomes more consistent and reliable.
+All of the systems complement the deficiencies of each other; therefore, their performance becomes more consistent and reliable. On 10 consecutive trials of the complete race (including three laps as well as parking maneuvers), the robot accomplished a successful completion of the race without touching in 9 out of 10 tries (90% success rate), averaging 26 seconds per lap.
 
 # <hr/>
 
@@ -941,7 +941,7 @@ The code is written in LEGO MINDSTORMS block programming language and you can do
 You can also download the previous version of the code, compare it with the new one, and follow our progress.</br>
 <a href="https://github.com/QZOFlameFE/FE2025_1st_repo_ByFlame/blob/main/Instructions/FECHALLENGE2025YA.ev3">previous code</a> <br> <br>
 
-First of all we align the steering wheels to the center, so the robot moves straightforward. Then in configuration we set app all of the variables with specific values and using the bug of LEGO MINDSTORMS we reset the values of gyro sensor. Then our programm splits into 3 streams, first for robot control, 2nd for taking the values of Pixy2 camera into variables for obstacle management and the 3rd is for taking the values of UART sensors that are LEGO sensors and using the logic to determine the line color and round direction, activating the logic flag for turn, also the PID regulator of steering control is managed. Dividing the code into 3 streams is necessary for LEGO platform because it improves data processing and optimization of the programm logic and programm operating speed and improving precisesness of data. All of the key principles are in the 1st stream. This stream used for robot control and is responsible for the aligning to the center and to detour the obstacles. After that the main stream ends a loop for 3 laps and starts the parking.
+First of all we align the steering wheels to the center, so the robot moves straightforward. Then in configuration we set app all of the variables with specific values and using the bug of LEGO MINDSTORMS we reset the values of gyro sensor. Then our programm splits into 3 streams, first for robot control, 2nd for taking the values of Pixy2 camera into variables for obstacle management and the 3rd is for taking the values of UART sensors that are LEGO sensors and using the logic to determine the line color and round direction, activating the logic flag for turn, also the PID regulator of steering control is managed. Dividing the code into 3 streams is necessary for LEGO platform because it improves data processing and optimization of the programm logic and programm operating speed and improving precisesness of data. All of the key principles are in the 1st stream. This stream used for robot control and is responsible for the aligning to the center and to detour the obstacles. After that the main stream ends a loop for 3 laps and starts the parking. 
 
 
 # Conclusion
